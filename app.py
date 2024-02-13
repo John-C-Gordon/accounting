@@ -63,7 +63,7 @@ st.table(data.head())
 query = st.text_area('What query would you like to run?')
 
 if query:
-    openai_llm = OpenAI(api_token = st.secrets["api_token"])
+    openai_llm = OpenAI(api_token = st.secrets[api_token])
     sdf = SmartDataframe(data, config={'llm': openai_llm, "response_parser": StreamlitResponse})
     
     sdf.chat(query)
