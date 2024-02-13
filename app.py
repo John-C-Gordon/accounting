@@ -10,7 +10,7 @@ from pandasai.llm import OpenAI
 from pandasai.responses.response_parser import ResponseParser
 import os
 
-st.set_page_config(page_title="Accounting Data Query")
+st.set_page_config(page_title="Accounting Data Query", page_icon="bar chart")
 
 conn = st.connection("gsheets", type=GSheetsConnection)
 api_token = st.secrets["api_token"]
@@ -32,8 +32,6 @@ class StreamlitResponse(ResponseParser):
     def format_other(self, result):
         st.write(result["value"])
         return
-
-st.set_page_config(page_icon="bar chart")
 st.title('2023 Full Year Pull')
 
 
