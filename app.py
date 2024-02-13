@@ -36,7 +36,7 @@ st.title('2023 Full Year Pull')
 
 
 
-st.df(data.head())
+st.dataframe(data.head())
 
 # f = (
 #     Pie(init_opts=opts.InitOpts(theme=ThemeType.DARK))
