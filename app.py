@@ -31,7 +31,7 @@ class StreamlitResponse(ResponseParser):
         st.write(result["value"])
         return
 
-
+st.set_page_config(page_icon="bar chart")
 st.title('2023 Full Year Pull')
 
 
