@@ -32,11 +32,11 @@ class StreamlitResponse(ResponseParser):
         return
 
 
-st.title('January 2023 Pull')
+st.title('2023 Full Year Pull')
 
 
 
-st.table(data.head())
+st.df(data.head())
 
 # f = (
 #     Pie(init_opts=opts.InitOpts(theme=ThemeType.DARK))
