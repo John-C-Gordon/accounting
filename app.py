@@ -15,8 +15,8 @@ st.set_page_config(page_title="Accounting Data Query", page_icon="bar chart")
 conn = st.connection("gsheets", type=GSheetsConnection)
 api_token = st.secrets["api_token"]
 
-data = conn.read(worksheet='January_Earned_Unearned')
-# data['Count'] = 1
+data = conn.read(worksheet='merged_filtered')
+
 class StreamlitResponse(ResponseParser):
     def __init__(self, context) -> None:
         super().__init__(context)
@@ -36,7 +36,7 @@ st.title('2023 Full Year Pull')
 
 
 
-st.dataframe(data.iloc[:,:-2])
+st.dataframe(data.head())
 
 # f = (
 #     Pie(init_opts=opts.InitOpts(theme=ThemeType.DARK))
