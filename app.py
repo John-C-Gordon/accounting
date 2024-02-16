@@ -10,7 +10,7 @@ from pandasai.llm import OpenAI
 from pandasai.responses.response_parser import ResponseParser
 import os
 
-st.set_page_config(page_icon="bar chart", page_title="Accounting Data Query")
+st.set_page_config(page_icon="📊", page_title="Accounting Data Query")
 
 conn = st.connection("gsheets", type=GSheetsConnection)
 api_token = st.secrets["api_token"]
