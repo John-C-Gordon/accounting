@@ -36,7 +36,7 @@ st.title('2023 Full Year Pull')
 data['Two'] = 2
 
 
-st.dataframe(data.iloc[:, :-2])
+st.dataframe(data.iloc[:, :])
 
 # f = (
 #     Pie(init_opts=opts.InitOpts(theme=ThemeType.DARK))
