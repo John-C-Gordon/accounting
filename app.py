@@ -33,7 +33,7 @@ class StreamlitResponse(ResponseParser):
         st.write(result["value"])
         return
 st.title('2023 Full Year Pull')
-data['Two'] = 2
+data['Participant_GUID'] = data['customer_uid']
 
 
 st.dataframe(data.iloc[:, :-3])
