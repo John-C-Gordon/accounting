@@ -36,7 +36,7 @@ st.title('2023 Full Year Pull')
 data['Participant_GUID'] = data['customer_uid']
 data['Order_GUID'] = data['order_guid']
 
-st.dataframe(data.iloc[:, :-3])
+st.dataframe(data.iloc[:, :-2])
 
 # f = (
 #     Pie(init_opts=opts.InitOpts(theme=ThemeType.DARK))
