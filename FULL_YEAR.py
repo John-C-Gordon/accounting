@@ -33,7 +33,7 @@ class StreamlitResponse(ResponseParser):
 def load_data(_flavor, _type):
     conn = st.connection(_flavor, _type)
     return conn
-load_data('mysql', type='sql')
+load_data('mysql', 'sql')
 
 st.title('2023 Full Year Pull')
 
