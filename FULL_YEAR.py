@@ -29,7 +29,7 @@ class StreamlitResponse(ResponseParser):
         return
 
 
-@st.cache_data()
+@st.cache_data(allow_output_mutation=True)
 def load_data(_flavor, _type):
     conn = st.connection(_flavor, _type)
     return conn
