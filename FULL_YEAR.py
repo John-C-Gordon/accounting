@@ -5,6 +5,7 @@ from datetime import datetime
 from pandasai import SmartDataframe
 from pandasai.llm import OpenAI
 from pandasai.responses.response_parser import ResponseParser
+import pymysql
 
 #TITLE
 
