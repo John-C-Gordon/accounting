@@ -3,3 +3,4 @@ st-gsheets-connection
 pyecharts
 pandasai
 sqlalchemy
+pymysql
