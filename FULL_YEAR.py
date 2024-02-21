@@ -34,7 +34,7 @@ def load_data():
     name='mysql' 
     type='sql'
     return st.connection(name=name,type=type)
-load_data()
+conn = load_data()
 
 st.title('2023 Full Year Pull')
 
