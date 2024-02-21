@@ -30,8 +30,8 @@ class StreamlitResponse(ResponseParser):
 
 
 @st.cache_data()
-def load_data(_flavor, type):
-    conn = st.connection(_flavor, type)
+def load_data(_flavor, _type):
+    conn = st.connection(_flavor, _type)
     return conn
 load_data('mysql', type='sql')
 
