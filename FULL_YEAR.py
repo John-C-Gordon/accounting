@@ -38,13 +38,12 @@ df = pd.DataFrame(conn.query('select * from codes;', ttl=0))
 gf['appt_time'] = df['screening_cd']
 gf['payment_uid'] = df['appointment_cd']
 
-gf.rename(columns={'amount_paid': 'Amount Paid', 'Comment_Alert': 'Appointment Date', 'screening_id': 'Payment Type', 
-                   'payment_type_id': 'Payment UID', 'appt_time': 'Screening Code', 'payment_uid': 'Appoitment Code'})
-
 end_date = datetime(2023, 12, 31, 0)
 gf['Comment_Alert'] = pd.to_datetime(gf['Comment_Alert'])
 gf['earned'] = gf['Comment_Alert'] < end_date
 
+gf.rename(columns={'amount_paid': 'Amount Paid', 'Comment_Alert': 'Appointment Date', 'screening_id': 'Payment Type', 
+                   'payment_type_id': 'Payment UID', 'appt_time': 'Screening Code', 'payment_uid': 'Appoitment Code'})
 st.dataframe(gf)
 
 query = st.text_area('What query would you like to run?')
