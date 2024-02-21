@@ -30,23 +30,23 @@ class StreamlitResponse(ResponseParser):
 
 #connect 
 @st.cache_data()
-def fetch_data():
-    conn = st.connection('mysql', type='sql')
-    
-    st.title('2023 Full Year Pull')
-    
-    gf = pd.DataFrame(conn.query('select * from data_pull;', ttl=0))
-    df = pd.DataFrame(conn.query('select * from codes;', ttl=0))
-    gf['appt_time'] = df['screening_cd']
-    gf['payment_uid'] = df['appointment_cd']
-    
-    end_date = datetime(2023, 12, 31, 0)
-    gf['Comment_Alert'] = pd.to_datetime(gf['Comment_Alert'])
-    gf['earned'] = gf['Comment_Alert'] < end_date
-    
-    gf.rename(columns={'amount_paid': 'Amount Paid', 'Comment_Alert': 'Appointment Date', 'screening_id': 'Payment Type', 
-                       'payment_type_id': 'Payment UID', 'appt_time': 'Screening Code', 'payment_uid': 'Appoitment Code', 'screening_cd': 'Screening ID'}, inplace=True)
-    return gf
+
+conn = st.connection('mysql', type='sql')
+
+st.title('2023 Full Year Pull')
+
+gf = pd.DataFrame(conn.query('select * from data_pull;', ttl=0))
+df = pd.DataFrame(conn.query('select * from codes;', ttl=0))
+gf['appt_time'] = df['screening_cd']
+gf['payment_uid'] = df['appointment_cd']
+
+end_date = datetime(2023, 12, 31, 0)
+gf['Comment_Alert'] = pd.to_datetime(gf['Comment_Alert'])
+gf['earned'] = gf['Comment_Alert'] < end_date
+
+gf.rename(columns={'amount_paid': 'Amount Paid', 'Comment_Alert': 'Appointment Date', 'screening_id': 'Payment Type', 
+                   'payment_type_id': 'Payment UID', 'appt_time': 'Screening Code', 'payment_uid': 'Appoitment Code', 'screening_cd': 'Screening ID'}, inplace=True)
+st.dataframe(gf)
 
 query = st.text_area('What query would you like to run?')
 
