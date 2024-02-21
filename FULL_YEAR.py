@@ -31,8 +31,9 @@ class StreamlitResponse(ResponseParser):
 
 @st.cache(allow_output_mutation=True)
 def load_data():
-    conn = st.connection('mysql', type='sql')
-    return conn
+    name='mysql' 
+    type='sql'
+    return st.connection(name=name,type=type)
 load_data()
 
 st.title('2023 Full Year Pull')
