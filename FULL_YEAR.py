@@ -40,9 +40,9 @@ if 'df' not in st.session_state:  # if df not in session state
 else:
     df=st.session_state['df']     # otherwise get it from session state 
 
-conn = st.connection('mysql', type='sql')
+connection = st.connection('mysql', type='sql')
 
-load_data(conn)
+load_data(connection)
 
 st.title('2023 Full Year Pull')
 
