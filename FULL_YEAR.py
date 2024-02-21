@@ -38,7 +38,7 @@ conn = st.connection('mysql', type='sql')
 
 # load_data(conn)
 if 'df' not in st.session_state:  # if df not in session state
-    df=load_data(connection)      # get the df 
+    df=load_data(conn)      # get the df 
     st.session_state['df']=df     # write it to session state 
 else:
     df=st.session_state['df']     # otherwise get it from session state 
