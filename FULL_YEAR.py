@@ -34,15 +34,18 @@ def load_data(connection):
     sql = 'select * from tablename'
     df = pd.read_sql(sql, con = connection)
     return df
+conn = st.connection('mysql', type='sql')
+
+# load_data(conn)
 if 'df' not in st.session_state:  # if df not in session state
     df=load_data(connection)      # get the df 
     st.session_state['df']=df     # write it to session state 
 else:
     df=st.session_state['df']     # otherwise get it from session state 
 
-connection = st.connection('mysql', type='sql')
+# conn = st.connection('mysql', type='sql')
 
-load_data(connection)
+load_data(conn)
 
 st.title('2023 Full Year Pull')
 
