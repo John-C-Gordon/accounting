@@ -29,7 +29,7 @@ class StreamlitResponse(ResponseParser):
         return
 
 
-@st.cache(allow_output_mutation=True)
+@st.cache_resource
 def load_data():
     name='mysql' 
     type='sql'
