@@ -29,11 +29,20 @@ class StreamlitResponse(ResponseParser):
         return
 
 
-@st.cache_data(allow_output_mutation=True)
-def load_data(_flavor, _type):
-    conn = st.connection(_flavor, _type)
-    return conn
-load_data('mysql', 'sql')
+# @st.cache_resource()
+def load_data(connection):
+    sql = 'select * from tablename'
+    df = pd.read_sql(sql, con = connection)
+    return df
+if 'df' not in st.session_state:  # if df not in session state
+    df=load_data(connection)      # get the df 
+    st.session_state['df']=df     # write it to session state 
+else:
+    df=st.session_state['df']     # otherwise get it from session state 
+
+conn = st.connection('mysql', type='sql')
+
+load_data(conn)
 
 st.title('2023 Full Year Pull')
 
