@@ -36,19 +36,22 @@ def load_data():
     return st.connection(name=name,type=type)
 conn = load_data()
 
-st.title('2023 Full Year Pull')
+st.title('2023 Full Year Pull :clipboard:')
 
-gf = pd.DataFrame(conn.query('select * from data_pull;', ttl=0))
-df = pd.DataFrame(conn.query('select * from codes;', ttl=0))
-gf['appt_time'] = df['screening_cd']
-gf['payment_uid'] = df['appointment_cd']
-
-end_date = datetime(2023, 12, 31, 0)
-gf['Comment_Alert'] = pd.to_datetime(gf['Comment_Alert'])
-gf['earned'] = gf['Comment_Alert'] < end_date
-
-gf.rename(columns={'amount_paid': 'Amount Paid', 'Comment_Alert': 'Appointment Date', 'screening_id': 'Payment Type', 
+@st.cache_data
+def get_gf():
+    gf = pd.DataFrame(conn.query('select * from data_pull;', ttl=0))
+    df = pd.DataFrame(conn.query('select * from codes;', ttl=0))
+    gf['appt_time'] = df['screening_cd']
+    gf['payment_uid'] = df['appointment_cd']
+    end_date = datetime(2023, 12, 31, 0)
+    gf['Comment_Alert'] = pd.to_datetime(gf['Comment_Alert'])
+    gf['earned'] = gf['Comment_Alert'] < end_date
+    gf.rename(columns={'amount_paid': 'Amount Paid', 'Comment_Alert': 'Appointment Date', 'screening_id': 'Payment Type', 
                    'payment_type_id': 'Payment UID', 'appt_time': 'Screening Code', 'payment_uid': 'Appoitment Code', 'screening_cd': 'Screening ID'}, inplace=True)
+    return gf
+gf = get_gf()
+
 st.dataframe(gf)
 
 query = st.text_area('What query would you like to run?')
