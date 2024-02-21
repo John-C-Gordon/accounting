@@ -29,7 +29,7 @@ class StreamlitResponse(ResponseParser):
         return
 
 #connect 
-@st.cache_data()
+# @st.cache_data()
 
 conn = st.connection('mysql', type='sql')
 
