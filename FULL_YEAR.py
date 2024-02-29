@@ -2,15 +2,15 @@ import streamlit as st
 import sqlalchemy
 import pandas as pd
 from datetime import datetime
-from pandasai import SmartDataframe
-from pandasai.llm import OpenAI
+# from pandasai import SmartDataframe
+# from pandasai.llm import OpenAI
 from pandasai.responses.response_parser import ResponseParser
 import pymysql
 
 #TITLE
 
 st.set_page_config(page_icon="📊", page_title="Accounting Data Query")
-api_token = st.secrets["api_token"]
+# api_token = st.secrets["api_token"]
 
 class StreamlitResponse(ResponseParser):
     def __init__(self, context) -> None:
@@ -56,11 +56,11 @@ st.dataframe(gf)
 
 query = st.text_area('What query would you like to run?')
 
-if query:
-    openai_llm = OpenAI(api_token = api_token)
-    sdf = SmartDataframe(gf, config={'llm': openai_llm, "response_parser": StreamlitResponse})
+# if query:
+#     openai_llm = OpenAI(api_token = api_token)
+#     sdf = SmartDataframe(gf, config={'llm': openai_llm, "response_parser": StreamlitResponse})
     
-    sdf.chat(query)
+#     sdf.chat(query)
     # st.write(answer)
 # st.write(st.session_state)
 
