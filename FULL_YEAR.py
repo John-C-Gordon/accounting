@@ -54,14 +54,39 @@ gf = get_gf()
 
 st.dataframe(gf)
 
-query = st.text_area('What query would you like to run?')
+st.header('Find row(s) by:')
 
-# if query:
-#     openai_llm = OpenAI(api_token = api_token)
-#     sdf = SmartDataframe(gf, config={'llm': openai_llm, "response_parser": StreamlitResponse})
-    
-#     sdf.chat(query)
-    # st.write(answer)
-# st.write(st.session_state)
+fields = {}
 
-# st.write(gf.groupby(['earned']).sum()['amount_paid'])
+col1, col2 = st.columns(2)
+with col1:
+    for i in gf.columns.to_list()[0:4]:
+        option = st.text_input('{}:'.format(i), key='{}'.format(i))
+with col2:
+    for i in gf.columns.to_list()[4:8]:
+        option = st.text_input('{}:'.format(i), key='{}'.format(i))
+
+for i in st.session_state:
+    if st.session_state['{}'.format(i)]:
+        dict = {'{}'.format(i): str(st.session_state['{}'.format(i)])}
+        fields.update(dict)
+
+s = ""
+
+for i in range(len(fields)):
+    if list(fields.keys())[i] == ('Amount Paid') or list(fields.keys())[i] == ('Earned'):
+        s += '`' + (str(list(fields.keys())[i]) + '`' + "==" + str(list(fields.values())[i]) + " &")
+    elif list(fields.keys())[i] != (('Amount Paid') or list(fields.keys())[i] != ('Earned')):
+        s += '`' + (str(list(fields.keys())[i])) + '`' + "==" + "'" + str(list(fields.values())[i]) + "'" + " &"
+button1, button2, button3 = st.columns([1, 1, 1])
+with button1:
+    submitted = st.button('Search', type="primary")   
+
+if len(fields) == 0:
+    st.warning('Please enter at least one (1) of the above fields.')
+if len(fields) != 0:
+    if submitted:
+        # st.write(s[:-1])
+        st.dataframe(gf.query("{}".format(s[:-1])))
+        st.success("{} rows returned.".format(len(gf.query("{}".format(s[:-1])).index)))
+
