@@ -8,6 +8,7 @@ from pandasai import SmartDataframe
 from pandasai.llm import OpenAI
 from pandasai.responses.response_parser import ResponseParser
 import os
+import pyyaml
 
 conn = st.connection("gsheets", type=GSheetsConnection)
 
