@@ -4,7 +4,7 @@ import pandas as pd
 from datetime import datetime
 # from pandasai import SmartDataframe
 # from pandasai.llm import OpenAI
-from pandasai.responses.response_parser import ResponseParser
+# from pandasai.responses.response_parser import ResponseParser
 import pymysql
 
 #TITLE
