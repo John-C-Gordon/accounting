@@ -12,21 +12,21 @@ import pymysql
 st.set_page_config(page_icon="📊", page_title="Accounting Data Query")
 # api_token = st.secrets["api_token"]
 
-class StreamlitResponse(ResponseParser):
-    def __init__(self, context) -> None:
-        super().__init__(context)
+# class StreamlitResponse(ResponseParser):
+#     def __init__(self, context) -> None:
+#         super().__init__(context)
 
-    def format_dataframe(self, result):
-        st.dataframe(result["value"])
-        return
+#     def format_dataframe(self, result):
+#         st.dataframe(result["value"])
+#         return
 
-    def format_plot(self, result):
-        st.image(result["value"])
-        return
+#     def format_plot(self, result):
+#         st.image(result["value"])
+#         return
     
-    def format_other(self, result):
-        st.write(result["value"])
-        return
+#     def format_other(self, result):
+#         st.write(result["value"])
+#         return
 
 
 @st.cache_resource
