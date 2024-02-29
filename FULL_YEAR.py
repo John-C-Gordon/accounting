@@ -62,6 +62,6 @@ if query:
     
     sdf.chat(query)
     # st.write(answer)
-st.write(st.session_state)
+# st.write(st.session_state)
 
 # st.write(gf.groupby(['earned']).sum()['amount_paid'])
