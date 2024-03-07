@@ -13,7 +13,15 @@ import streamlit_authenticator as stauth
 
 st.set_page_config(page_icon="📊", page_title="Accounting Data Query")
 # api_token = st.secrets["api_token"]
-
+credentials = {
+    "usernames":{
+        "admin":{
+            "name":"Admin",
+            "password": "12345678"}
+        }
+    }
+authenticator = stauth.Authenticate(credentials, 
+    "accounting_query", "abcdef", cookie_expiry_days=0)
 # class StreamlitResponse(ResponseParser):
 #     def __init__(self, context) -> None:
 #         super().__init__(context)
@@ -29,7 +37,13 @@ st.set_page_config(page_icon="📊", page_title="Accounting Data Query")
 #     def format_other(self, result):
 #         st.write(result["value"])
 #         return
+name, authentication_status, username = authenticator.login("main")
 
+if authentication_status == False:
+    st.error("Username/Password is incorrect")
+if authentication_status == None:
+    st.warning("Please enter Username and Password")
+if authentication_status == True:
 
 @st.cache_resource
 def load_data():
