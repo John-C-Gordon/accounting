@@ -44,7 +44,6 @@ if authentication_status == False:
 if authentication_status == None:
     st.warning("Please enter Username and Password")
 if authentication_status == True:
-
     @st.cache_resource
     def load_data():
         name='mysql' 
