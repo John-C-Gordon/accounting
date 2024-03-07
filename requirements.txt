@@ -5,3 +5,4 @@ pandasai
 sqlalchemy
 pymysql
 pyyaml
+streamlit-authennticator
