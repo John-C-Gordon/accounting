@@ -82,9 +82,11 @@ if authentication_status == True:
             option = st.text_input('{}:'.format(i), key='{}'.format(i))
     
     for i in st.session_state:
-        if st.session_state['{}'.format(i)]:
-            dict = {'{}'.format(i): str(st.session_state['{}'.format(i)])}
-            fields.update(dict)
+        if i not in ["username", "init", "failed_login_attempts",
+        "authentication_status", "name", "logout"]: # want to ignore the login session states
+            if st.session_state['{}'.format(i)]:
+                dict = {'{}'.format(i): str(st.session_state['{}'.format(i)])}
+                fields.update(dict)
     
     s = ""
     
