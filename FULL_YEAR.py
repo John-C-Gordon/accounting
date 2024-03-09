@@ -21,7 +21,7 @@ credentials = {
         }
     }
 authenticator = stauth.Authenticate(credentials, 
-    "accounting_query", "abcdef", cookie_expiry_days=0)
+    "accounting_query", "abcdef", cookie_expiry_days=14)
 # class StreamlitResponse(ResponseParser):
 #     def __init__(self, context) -> None:
 #         super().__init__(context)
