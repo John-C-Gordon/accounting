@@ -62,8 +62,11 @@ if authentication_status == True:
         end_date = datetime(2023, 12, 31, 0)
         gf['Comment_Alert'] = pd.to_datetime(gf['Comment_Alert'])
         gf['earned'] = gf['Comment_Alert'] < end_date
-        gf.rename(columns={'amount_paid': 'Amount Paid', 'Comment_Alert': 'Appointment Date', 'screening_id': 'Payment Type', 
-                       'payment_type_id': 'Payment UID', 'appt_time': 'Screening Code', 'payment_uid': 'Appointment Code', 'screening_cd': 'Screening ID', 'earned': 'Earned'}, inplace=True)
+        gf.rename(columns={'amount_paid': 'Amount Paid', 'Comment_Alert': 'Appointment Date', 'screening_id': 'Payment Type',
+        'earned': 'Earned'}, inplace=True)
+        gf['Appointment Code'] = appt_cds['Appointment_Code']
+        gf['Order GUID'] = order_participant['order_guid']
+        gf['Participant GUID'] = order_participant['participant_guid']
         return gf
     gf = get_gf()
     
