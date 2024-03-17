@@ -56,7 +56,9 @@ if authentication_status == True:
     @st.cache_data
     def get_gf():
         gf = pd.DataFrame(conn.query('select * from data_pull;', ttl=0))
-        df = pd.DataFrame(conn.query('select * from codes;', ttl=0))
+        # df = pd.DataFrame(conn.query('select * from codes;', ttl=0))
+        order_participant = pd.DataFrame(conn.query('select * from additional_fields;', ttl=0))
+        appt_cds = pd.DataFrame(conn.query('select * from appt_codes;', ttl=0))
         gf['appt_time'] = df['screening_cd']
         gf['payment_uid'] = df['appointment_cd']
         end_date = datetime(2023, 12, 31, 0)
