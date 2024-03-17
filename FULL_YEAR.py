@@ -16,8 +16,8 @@ st.set_page_config(page_icon="📊", page_title="Accounting Data Query")
 credentials = {
     "usernames":{
         "admin":{
-            "name":"Admin",
-            "password": "12345678"}
+            "name": st.secrets["USERNAME"],
+            "password": st.secrets["PASSWORD"]}
         }
     }
 authenticator = stauth.Authenticate(credentials, 
