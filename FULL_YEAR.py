@@ -59,8 +59,8 @@ if authentication_status == True:
         # df = pd.DataFrame(conn.query('select * from codes;', ttl=0))
         order_participant = pd.DataFrame(conn.query('select * from additional_fields;', ttl=0))
         appt_cds = pd.DataFrame(conn.query('select * from appt_codes;', ttl=0))
-        gf['appt_time'] = df['screening_cd']
-        gf['payment_uid'] = df['appointment_cd']
+        # gf['appt_time'] = df['screening_cd']
+        # gf['payment_uid'] = df['appointment_cd']
         end_date = datetime(2023, 12, 31, 0)
         gf['Comment_Alert'] = pd.to_datetime(gf['Comment_Alert'])
         gf['earned'] = gf['Comment_Alert'] < end_date
