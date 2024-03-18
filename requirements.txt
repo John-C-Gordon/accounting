@@ -7,3 +7,4 @@ pymysql
 pyyaml
 streamlit-authenticator
 mysql-connector-python
+polars
