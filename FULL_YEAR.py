@@ -6,6 +6,7 @@ from datetime import datetime
 # from pandasai.llm import OpenAI
 # from pandasai.responses.response_parser import ResponseParser
 import pymysql
+import mysql.connector
 # from streamlit_option_menu import option_menu
 import streamlit_authenticator as stauth
 
