@@ -60,7 +60,7 @@ if authentication_status == True:
     st.title('2023 Full Year Pull :clipboard:')
     
     @st.cache_data
-    # def get_gf():
+    def get_gf():
     #     gf = pd.DataFrame(conn.query('select * from data_pull;', ttl=0))
     #     # df = pd.DataFrame(conn.query('select * from codes;', ttl=0))
     #     order_participant = pd.DataFrame(conn.query('select * from additional_fields;', ttl=0))
@@ -77,7 +77,9 @@ if authentication_status == True:
     #     gf['Participant GUID'] = order_participant['participant_guid']
     #     return gf
     # gf = get_gf()
-    gf = pl.read_database("SELECT * FROM data_pull", conn)
+        gf = pl.read_database("SELECT * FROM data_pull", conn)
+        return gf
+    gf = get_gf()
     
     st.dataframe(gf)
     
