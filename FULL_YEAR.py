@@ -45,32 +45,39 @@ if authentication_status == None:
     st.warning("Please enter Username and Password")
 if authentication_status == True:
     @st.cache_resource
-    def load_data():
-        name='mysql' 
-        type='sql'
-        return st.connection(name=name,type=type)
-    conn = load_data()
+    def create_connection():
+        connection = mysql.connector.connect(
+            host = "database-3.cjswimsgs1xx.us-east-1.rds.amazonaws.com", # This database is hosted through AWS on my account, using the
+            user = "admin",                                               # free tier
+            password = "12345678", #This password can be changed to something more secure, but wanted to ensure that the rest of the steps
+                                  #would work before changing
+            database = "accounting"  # --- since the AWS service only provides a database *instance*, no database should be specified in 
+                                        # this function, the database itself will be created in the following steps
+        )
+        return connection
+    conn = create_connection()
     
     st.title('2023 Full Year Pull :clipboard:')
     
     @st.cache_data
-    def get_gf():
-        gf = pd.DataFrame(conn.query('select * from data_pull;', ttl=0))
-        # df = pd.DataFrame(conn.query('select * from codes;', ttl=0))
-        order_participant = pd.DataFrame(conn.query('select * from additional_fields;', ttl=0))
-        appt_cds = pd.DataFrame(conn.query('select * from appt_codes;', ttl=0))
-        # gf['appt_time'] = df['screening_cd']
-        # gf['payment_uid'] = df['appointment_cd']
-        end_date = datetime(2023, 12, 31, 0)
-        gf['Comment_Alert'] = pd.to_datetime(gf['Comment_Alert'])
-        gf['earned'] = gf['Comment_Alert'] < end_date
-        gf.rename(columns={'amount_paid': 'Amount Paid', 'Comment_Alert': 'Appointment Date', 'screening_id': 'Payment Type',
-        'earned': 'Earned'}, inplace=True)
-        gf['Appointment Code'] = appt_cds['Appointment_Code']
-        gf['Order GUID'] = order_participant['order_guid']
-        gf['Participant GUID'] = order_participant['participant_guid']
-        return gf
-    gf = get_gf()
+    # def get_gf():
+    #     gf = pd.DataFrame(conn.query('select * from data_pull;', ttl=0))
+    #     # df = pd.DataFrame(conn.query('select * from codes;', ttl=0))
+    #     order_participant = pd.DataFrame(conn.query('select * from additional_fields;', ttl=0))
+    #     appt_cds = pd.DataFrame(conn.query('select * from appt_codes;', ttl=0))
+    #     # gf['appt_time'] = df['screening_cd']
+    #     # gf['payment_uid'] = df['appointment_cd']
+    #     end_date = datetime(2023, 12, 31, 0)
+    #     gf['Comment_Alert'] = pd.to_datetime(gf['Comment_Alert'])
+    #     gf['earned'] = gf['Comment_Alert'] < end_date
+    #     gf.rename(columns={'amount_paid': 'Amount Paid', 'Comment_Alert': 'Appointment Date', 'screening_id': 'Payment Type',
+    #     'earned': 'Earned'}, inplace=True)
+    #     gf['Appointment Code'] = appt_cds['Appointment_Code']
+    #     gf['Order GUID'] = order_participant['order_guid']
+    #     gf['Participant GUID'] = order_participant['participant_guid']
+    #     return gf
+    # gf = get_gf()
+    gf = pl.read_database("SELECT * FROM data_pull", conn)
     
     st.dataframe(gf)
     
@@ -93,22 +100,22 @@ if authentication_status == True:
                 dict = {'{}'.format(i): str(st.session_state['{}'.format(i)])}
                 fields.update(dict)
     
-    s = ""
+    # s = ""
     
-    for i in range(len(fields)):
-        if list(fields.keys())[i] == ('Amount Paid') or list(fields.keys())[i] == ('Earned'):
-            s += '`' + (str(list(fields.keys())[i]) + '`' + "==" + str(list(fields.values())[i]) + " &")
-        elif list(fields.keys())[i] != (('Amount Paid') or list(fields.keys())[i] != ('Earned')):
-            s += '`' + (str(list(fields.keys())[i])) + '`' + "==" + "'" + str(list(fields.values())[i]) + "'" + " &"
-    button1, button2, button3 = st.columns([1, 1, 1])
-    with button1:
-        submitted = st.button('Search', type="primary")   
+    # for i in range(len(fields)):
+    #     if list(fields.keys())[i] == ('Amount Paid') or list(fields.keys())[i] == ('Earned'):
+    #         s += '`' + (str(list(fields.keys())[i]) + '`' + "==" + str(list(fields.values())[i]) + " &")
+    #     elif list(fields.keys())[i] != (('Amount Paid') or list(fields.keys())[i] != ('Earned')):
+    #         s += '`' + (str(list(fields.keys())[i])) + '`' + "==" + "'" + str(list(fields.values())[i]) + "'" + " &"
+    # button1, button2, button3 = st.columns([1, 1, 1])
+    # with button1:
+    #     submitted = st.button('Search', type="primary")   
     
-    if len(fields) == 0:
-        st.warning('Please enter at least one (1) of the above fields.')
-    if len(fields) != 0:
-        if submitted:
-            # st.write(s[:-1])
-            st.dataframe(gf.query("{}".format(s[:-1])))
-            st.success("{} rows returned.".format(len(gf.query("{}".format(s[:-1])).index)))
+    # if len(fields) == 0:
+    #     st.warning('Please enter at least one (1) of the above fields.')
+    # if len(fields) != 0:
+    #     if submitted:
+    #         # st.write(s[:-1])
+    #         st.dataframe(gf.query("{}".format(s[:-1])))
+    #         st.success("{} rows returned.".format(len(gf.query("{}".format(s[:-1])).index)))
 
