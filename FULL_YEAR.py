@@ -9,6 +9,7 @@ import pymysql
 import mysql.connector
 # from streamlit_option_menu import option_menu
 import streamlit_authenticator as stauth
+import polars as pl
 
 #TITLE
 
