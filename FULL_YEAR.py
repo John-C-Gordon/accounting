@@ -47,11 +47,11 @@ if authentication_status == True:
     @st.cache_resource
     def create_connection():
         connection = mysql.connector.connect(
-            host = "database-3.cjswimsgs1xx.us-east-1.rds.amazonaws.com", # This database is hosted through AWS on my account, using the
+            host = st.secrets["HOST"], # This database is hosted through AWS on my account, using the
             user = "admin",                                               # free tier
-            password = "12345678", #This password can be changed to something more secure, but wanted to ensure that the rest of the steps
+            password = st.secrets["PASSWORD"], #This password can be changed to something more secure, but wanted to ensure that the rest of the steps
                                   #would work before changing
-            database = "accounting"  # --- since the AWS service only provides a database *instance*, no database should be specified in 
+            database = st.secrets["DB"]  # --- since the AWS service only provides a database *instance*, no database should be specified in 
                                         # this function, the database itself will be created in the following steps
         )
         return connection
