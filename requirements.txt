@@ -6,3 +6,4 @@ sqlalchemy
 pymysql
 pyyaml
 streamlit-authenticator
+mysql
