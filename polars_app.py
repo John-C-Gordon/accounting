@@ -21,10 +21,10 @@ def create_connection():
     return connection
 conn = create_connection()
 cursor = conn.cursor()
-@st.cache_data
-def get_gf():
-    gf = pl.read_database("SELECT * FROM appt_codes;", conn)
-    return gf
-gf = get_gf()
-# st.write(conn)
-st.dataframe(gf)
+# @st.cache_data
+# def get_gf():
+#     gf = pl.read_database("SELECT * FROM appt_codes;", conn)
+#     return gf
+# gf = get_gf()
+st.write(cursor)
+# st.dataframe(gf)
