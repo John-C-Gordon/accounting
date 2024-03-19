@@ -4,6 +4,7 @@ from datetime import datetime
 import mysql.connector
 import polars as pl
 import pymysql
+import pandas as pd
 
 st.title("Test")
 @st.cache_resource
@@ -22,7 +23,7 @@ conn = create_connection()
 cursor = conn.cursor()
 @st.cache_data
 def get_gf():
-    gf = pl.read_database("SELECT * FROM data_pull;", conn)
+    gf = pd.read_sql("SELECT * FROM data_pull;", conn)
     return gf
 gf = get_gf()
 # st.write(conn)
