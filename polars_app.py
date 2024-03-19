@@ -20,10 +20,10 @@ def create_connection():
     return connection
 conn = create_connection()
 cursor = conn.cursor()
-# @st.cache_data
-# def get_gf():
-#     gf = pl.DataFrame(conn.query('select * from data_pull where amount_paid < 0;', ttl=0))
-#     return gf
-# gf = get_gf()
-st.write(conn)
-# st.dataframe(gf)
+@st.cache_data
+def get_gf():
+    gf = pl.DataFrame(conn.query('select * from data_pull where amount_paid < 0;', ttl=0))
+    return gf
+gf = get_gf()
+# st.write(conn)
+st.dataframe(gf)
