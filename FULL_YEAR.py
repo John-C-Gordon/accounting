@@ -47,23 +47,17 @@ if authentication_status == None:
     st.warning("Please enter Username and Password")
 if authentication_status == True:
     @st.cache_resource
-    def create_connection():
-        connection = mysql.connector.connect(
-            host = "database-3.cjswimsgs1xx.us-east-1.rds.amazonaws.com", # This database is hosted through AWS on my account, using the
-            user = "admin",                                               # free tier
-            password = "12345678", #This password can be changed to something more secure, but wanted to ensure that the rest of the steps
-                                  #would work before changing
-            database = "accounting"  # --- since the AWS service only provides a database *instance*, no database should be specified in 
-                                        # this function, the database itself will be created in the following steps
-        )
-        return connection
-    conn = create_connection()
+    def load_data():
+        name='mysql' 
+        type='sql'
+        return st.connection(name=name,type=type)
+    conn = load_data()
     
     st.title('2023 Full Year Pull :clipboard:')
     
     @st.cache_data
     def get_gf():
-        gf = pl.read_database("SELECT * FROM data_pull;", conn)
+        gf = pl.DataFrame(conn.query('select * from data_pull;', ttl=0))
         return gf
     gf = get_gf()
     # gf = get_gf()
