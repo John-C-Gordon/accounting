@@ -63,22 +63,6 @@ if authentication_status == True:
     
     @st.cache_data
     def get_gf():
-    #     gf = pd.DataFrame(conn.query('select * from data_pull;', ttl=0))
-    #     # df = pd.DataFrame(conn.query('select * from codes;', ttl=0))
-    #     order_participant = pd.DataFrame(conn.query('select * from additional_fields;', ttl=0))
-    #     appt_cds = pd.DataFrame(conn.query('select * from appt_codes;', ttl=0))
-    #     # gf['appt_time'] = df['screening_cd']
-    #     # gf['payment_uid'] = df['appointment_cd']
-    #     end_date = datetime(2023, 12, 31, 0)
-    #     gf['Comment_Alert'] = pd.to_datetime(gf['Comment_Alert'])
-    #     gf['earned'] = gf['Comment_Alert'] < end_date
-    #     gf.rename(columns={'amount_paid': 'Amount Paid', 'Comment_Alert': 'Appointment Date', 'screening_id': 'Payment Type',
-    #     'earned': 'Earned'}, inplace=True)
-    #     gf['Appointment Code'] = appt_cds['Appointment_Code']
-    #     gf['Order GUID'] = order_participant['order_guid']
-    #     gf['Participant GUID'] = order_participant['participant_guid']
-    #     return gf
-    # gf = get_gf()
         gf = pl.read_database("SELECT * FROM data_pull", conn)
         return gf
     gf = get_gf()
