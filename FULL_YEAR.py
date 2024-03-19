@@ -67,7 +67,7 @@ if authentication_status == True:
     # pd.read_sql_table("SELECT * FROM data_pull;", conn)
     
     ctx = pl.SQLContext(register_globals=True, eager_execution=True)
-    ctx.execute("SELECT * FROM population")
+    ctx.execute("SELECT * FROM data_pull")
     # gf = get_gf()
     
     st.write(conn.connection_id)
