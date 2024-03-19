@@ -15,10 +15,10 @@ def create_connection():
                               #would work before changing
         database = st.secrets["DB"]  # --- since the AWS service only provides a database *instance*, no database should be specified in 
                                     # this function, the database itself will be created in the following steps
+        buffered = True
     )
     return connection
 conn = create_connection()
-cursor = conn.cursor(buffered=True)
 
 # @st.cache_data
 # def get_gf():
