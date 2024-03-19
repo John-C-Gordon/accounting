@@ -21,7 +21,7 @@ conn = create_connection()
 
 @st.cache_data
 def get_gf():
-    gf = pl.read_database("SELECT * FROM data_pull;", conn)
+    gf = pl.DataFrame(conn.query('select * from data_pull where amount_paid < 0;', ttl=0))
     return gf
 gf = get_gf()
 
