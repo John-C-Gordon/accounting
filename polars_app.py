@@ -23,7 +23,7 @@ conn = create_connection()
 cursor = conn.cursor()
 @st.cache_data
 def get_gf():
-    gf = pd.read_sql("SELECT * FROM data_pull;", conn)
+    gf = pl.read_database("SELECT * FROM data_pull;", conn)
     return gf
 gf = get_gf()
 # st.write(conn)
