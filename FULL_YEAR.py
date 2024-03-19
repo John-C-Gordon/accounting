@@ -62,7 +62,7 @@ if authentication_status == True:
     gf = get_gf()
     # gf = get_gf()
     
-    st.write(conn.connection_id)
+    st.write(conn)
     
     # st.header('Find row(s) by:')
     
