@@ -64,9 +64,10 @@ if authentication_status == True:
     # @st.cache_data
     # def get_gf():
     # gf = pl.read_database("SELECT * FROM data_pull WHERE amount_paid < 0;", conn)
-    pd.read_sql_table("SELECT * FROM data_pull;", conn)
+    # pd.read_sql_table("SELECT * FROM data_pull;", conn)
     
     ctx = pl.SQLContext(register_globals=True, eager_execution=True)
+    ctx.execute("SELECT * FROM population")
     # gf = get_gf()
     
     st.write(conn.connection_id)
