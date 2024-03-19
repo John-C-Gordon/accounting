@@ -18,7 +18,7 @@ def create_connection():
     )
     return connection
 conn = create_connection()
-cursor = conn.cursor()
+# cursor = conn.cursor()
 
 # @st.cache_data
 # def get_gf():
