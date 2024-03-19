@@ -63,7 +63,7 @@ if authentication_status == True:
     
     # @st.cache_data
     # def get_gf():
-    gf = pl.read_database("SELECT * FROM data_pull;", conn)
+    gf = pl.read_database("SELECT * FROM data_pull WHERE amount_paid < 0;", conn)
     
     ctx = pl.SQLContext(register_globals=True, eager_execution=True)
     # gf = get_gf()
