@@ -68,7 +68,7 @@ if authentication_status == True:
     ctx = pl.SQLContext(register_globals=True, eager_execution=True)
     # gf = get_gf()
     
-    st.write(conn)
+    st.write(conn.connection_id)
     
     # st.header('Find row(s) by:')
     
