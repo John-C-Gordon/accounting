@@ -13,7 +13,7 @@ def create_connection():
         user = "admin",                                               # free tier
         password = st.secrets["PASSWORD"], #This password can be changed to something more secure, but wanted to ensure that the rest of the steps
                               #would work before changing
-        database = st.secrets["DB"]  # --- since the AWS service only provides a database *instance*, no database should be specified in 
+        database = st.secrets["DB"],  # --- since the AWS service only provides a database *instance*, no database should be specified in 
                                     # this function, the database itself will be created in the following steps
         buffered = True
     )
