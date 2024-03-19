@@ -66,7 +66,7 @@ if authentication_status == True:
         gf = pl.read_database("SELECT * FROM data_pull", conn)
         return gf
     gf = get_gf()
-    
+    ctx = pl.SQLContext(register_globals=True, eager_execution=True)
     st.dataframe(gf)
     
     # st.header('Find row(s) by:')
