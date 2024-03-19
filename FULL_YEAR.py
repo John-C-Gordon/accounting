@@ -61,12 +61,13 @@ if authentication_status == True:
     
     st.title('2023 Full Year Pull :clipboard:')
     
-    @st.cache_data
-    def get_gf():
-        gf = pl.read_database("SELECT * FROM data_pull", conn)
-        return gf
-    gf = get_gf()
+    # @st.cache_data
+    # def get_gf():
+    gf = pl.read_database("SELECT * FROM data_pull", conn)
+    
     ctx = pl.SQLContext(register_globals=True, eager_execution=True)
+    gf = get_gf()
+    
     st.dataframe(gf)
     
     # st.header('Find row(s) by:')
