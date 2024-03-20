@@ -1,4 +1,4 @@
-Eimport streamlit as st
+import streamlit as st
 import sqlalchemy
 from datetime import datetime
 import mysql.connector
