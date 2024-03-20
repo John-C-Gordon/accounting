@@ -27,7 +27,7 @@ cursor = conn.cursor()
 #     return gf
 # gf = get_gf()
 cursor.execute('''
-SELECT COLUMNS FROM data_pull''')
+SHOW COLUMNS FROM data_pull''')
 conn.commit()
 st.dataframe(pl.DataFrame(cursor.fetchall()))
 # st.dataframe(gf)
