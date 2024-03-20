@@ -25,7 +25,7 @@ cursor = conn.cursor()
 # def get_gf():
 #     gf = pl.read_database("SELECT * FROM appt_codes;", conn)
 #     return gf
-gf = get_gf()
+# gf = get_gf()
 cursor.execute('''
 SELECT * FROM data_pull''')
 # conn.commit()
