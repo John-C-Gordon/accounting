@@ -26,5 +26,8 @@ cursor = conn.cursor()
 #     gf = pl.read_database("SELECT * FROM appt_codes;", conn)
 #     return gf
 # gf = get_gf()
+cursor.execute('''
+SELECT * FROM data_pull''')
+connection.commit()
 st.write(cursor)
 # st.dataframe(gf)
