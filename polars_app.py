@@ -27,4 +27,4 @@ cursor = conn.cursor()
 # ctx = pl.SQLContext(data_pull = gf)
     # return ctx, gf
 # ctx, gf = get_gf()
-st.dataframe(cursor.execute("SELECT * FROM appt_codes"))
+st.write(conn))
