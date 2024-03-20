@@ -23,15 +23,15 @@ conn = create_connection()
 cursor = conn.cursor()
 # @st.cache_data
 # def get_gf():
-#     gf = pl.read_database("SELECT * FROM appt_codes;", conn)
+gf = pl.read_database("SELECT * FROM appt_codes;", conn)
 #     return gf
 # gf = get_gf()
-cursor.execute('''
-SELECT * FROM data_pull''')
+# cursor.execute('''
+# SELECT * FROM data_pull''')
 # conn.commit()
-df = pl.DataFrame(cursor.fetchall(), schema=[
-    'Amount Paid',
-    'Appointment Time',
-    'Payment Type',
-    'Earned'])
-st.dataframe(df)
+# df = pl.DataFrame(cursor.fetchall(), schema=[
+#     'Amount Paid',
+#     'Appointment Time',
+#     'Payment Type',
+#     'Earned'])
+st.dataframe(gf)
