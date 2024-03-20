@@ -23,7 +23,7 @@ conn = create_connection()
 cursor = conn.cursor()
 # @st.cache_resource
 # def get_gf():
-# gf = pl.read_database("SELECT * FROM data_pull;", conn)
+gf = pl.read_database("SELECT * FROM data_pull;", conn)
 # ctx = pl.SQLContext(data_pull = gf)
     # return ctx, gf
 # ctx, gf = get_gf()
