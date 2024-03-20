@@ -29,5 +29,5 @@ cursor = conn.cursor()
 cursor.execute('''
 SELECT * FROM data_pull''')
 conn.commit()
-st.write(cursor.fetchall())
+st.dataframe(pl.DataFrame(cursor.fetchall()))
 # st.dataframe(gf)
