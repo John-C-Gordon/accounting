@@ -27,7 +27,4 @@ cursor = conn.cursor()
 # ctx = pl.SQLContext(data_pull = gf)
     # return ctx, gf
 # ctx, gf = get_gf()
-# st.dataframe(ctx.execute(
-#     '''
-#     SELECT * FROM data_pull LIMIT 10;
-#     ''', eager = True))
+# st.dataframe(cursor.fetchall())
