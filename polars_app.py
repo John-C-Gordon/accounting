@@ -1,4 +1,4 @@
-import streamlit as st
+Eimport streamlit as st
 import sqlalchemy
 from datetime import datetime
 import mysql.connector
@@ -27,7 +27,11 @@ cursor = conn.cursor()
 #     return gf
 # gf = get_gf()
 cursor.execute('''
-SHOW COLUMNS FROM data_pull''')
-conn.commit()
-st.dataframe(pl.DataFrame(cursor.fetchall()))
+SELECT * FROM data_pull''')
+# conn.commit()
+st.dataframe(pl.DataFrame(cursor.fetchall(), columns=[
+    'Amount Paid',
+    'Appointment Time',
+    'Payment Type',
+    'Earned']))
 # st.dataframe(gf)
