@@ -28,6 +28,6 @@ cursor = conn.cursor()
 # gf = get_gf()
 cursor.execute('''
 SELECT * FROM data_pull''')
-connection.commit()
+conn.commit()
 st.write(cursor)
 # st.dataframe(gf)
