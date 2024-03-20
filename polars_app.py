@@ -29,7 +29,7 @@ cursor = conn.cursor()
 cursor.execute('''
 SELECT * FROM data_pull''')
 # conn.commit()
-st.dataframe(pl.DataFrame(cursor.fetchall(), columns=[
+st.dataframe(pl.DataFrame(cursor.fetchall(), schema=[
     'Amount Paid',
     'Appointment Time',
     'Payment Type',
