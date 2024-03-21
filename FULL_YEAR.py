@@ -64,7 +64,7 @@ if authentication_status == True:
     ctx = pl.SQLContext(data=gf)
     
     st.dataframe(ctx.execute('''
-    SELECT * FROM data LIMIT 4;
+    SELECT * FROM data LIMIT 8;
     ''', eager=True))
     
     # st.header('Find row(s) by:')
