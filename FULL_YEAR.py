@@ -57,7 +57,7 @@ if authentication_status == True:
     
     @st.cache_data
     def get_gf():
-        gf = pl.DataFrame(conn.query('select * from data_pull where amount_paid < 0;', ttl=0))
+        gf = pl.DataFrame(conn.query('select * from data_pull LIMIT 10;', ttl=0))
         return gf
     gf = get_gf()
     # gf = get_gf()
