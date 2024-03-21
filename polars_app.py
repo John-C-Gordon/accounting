@@ -23,7 +23,7 @@ conn = create_connection()
 cursor = conn.cursor()
 # @st.cache_resource
 # def get_gf():
-cursor.execute('''SELECT * FROM data_pull;''')
+cursor.execute('''SELECT * FROM appt_codes;''')
 # ctx = pl.SQLContext(data_pull = gf)
     # return ctx, gf
 # ctx, gf = get_gf()
