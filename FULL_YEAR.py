@@ -62,7 +62,7 @@ if authentication_status == True:
     gf = get_gf()
     # gf = get_gf()
     
-    st.dataframe(gf)
+    st.write(gf.schema)
     
     # st.header('Find row(s) by:')
     
