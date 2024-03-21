@@ -27,4 +27,4 @@ cursor.execute('''SELECT * FROM additional_fields;''')
 # ctx = pl.SQLContext(data_pull = gf)
     # return ctx, gf
 # ctx, gf = get_gf()
-st.dataframe(pd.DataFrame(cursor.fetchall()))
+st.dataframe(pl.DataFrame(cursor.fetchall()))
