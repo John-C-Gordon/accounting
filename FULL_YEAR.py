@@ -62,7 +62,7 @@ if authentication_status == True:
     gf = get_gf()
 
     participant_guid = pl.DataFrame(conn.query('select participant_guid from additional_fields;', ttl=0))
-    gf.insert_column(3, participant_guid.select("participant_guid")
+    gf.insert_column(3, participant_guid.select("participant_guid"))
     
     ctx = pl.SQLContext(data=gf)
     
