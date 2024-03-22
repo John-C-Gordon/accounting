@@ -61,9 +61,9 @@ if authentication_status == True:
         return gf
     gf = get_gf()
 
-    appts = pl.DataFrame(conn.query('select participant_guid from additional_fields;', ttl=0))
+    participant_guid = pl.DataFrame(conn.query('select participant_guid from additional_fields;', ttl=0))
     
-    ctx = pl.SQLContext(data=appts)
+    ctx = pl.SQLContext(data=participant_guid)
     
     st.dataframe(ctx.execute('''
     SELECT * FROM data LIMIT 8;
