@@ -61,7 +61,7 @@ if authentication_status == True:
         return gf
     gf = get_gf()
 
-    appts = pl.Dataframe(conn.query('select participant_guid from additional_fields;', ttl=0))
+    appts = pl.DataFrame(conn.query('select participant_guid from additional_fields;', ttl=0))
     
     ctx = pl.SQLContext(data=appts)
     
