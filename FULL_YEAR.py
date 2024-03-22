@@ -60,8 +60,10 @@ if authentication_status == True:
         gf = pl.DataFrame(conn.query('select * from data_pull LIMIT 10;', ttl=0))
         return gf
     gf = get_gf()
+
+    appts = pl.Dataframe(conn.query('select participant_guid from additional_fields;', ttl=0))
     
-    ctx = pl.SQLContext(data=gf)
+    ctx = pl.SQLContext(data=appts)
     
     st.dataframe(ctx.execute('''
     SELECT * FROM data LIMIT 8;
