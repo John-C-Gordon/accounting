@@ -61,12 +61,12 @@ if authentication_status == True:
         return gf
     gf = get_gf()
 
-    participant_guid = pl.DataFrame(conn.query('select participant_guid from additional_fields;', ttl=0))
+    # participant_guid = pl.Series(conn.query('select participant_guid from additional_fields;', ttl=0))
     # gf.insert_column(3, participant_guid.select("participant_guid"))
     
     ctx = pl.SQLContext(data=gf)
     
-    st.dataframe(participant_guid.select("participant_guid").to_list())
+    st.dataframe(pl.Series(conn.query('select participant_guid from additional_fields;', ttl=0)))
     
     # st.header('Find row(s) by:')
     
