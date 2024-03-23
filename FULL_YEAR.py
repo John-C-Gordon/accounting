@@ -62,11 +62,11 @@ if authentication_status == True:
     gf = get_gf()
 
     participant_guid = conn.query('select participant_guid from additional_fields;', ttl=0)
-    # gf.insert_column(3, participant_guid.select("participant_guid"))
+    gf.insert_column(5, pl.Series(participant_guid["participant_guid"]))
     
     ctx = pl.SQLContext(data=gf)
     
-    st.write(gf.columns)
+    st.write(gf.head())
     
     # st.header('Find row(s) by:')
     
