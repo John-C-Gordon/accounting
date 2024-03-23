@@ -66,7 +66,7 @@ if authentication_status == True:
     
     ctx = pl.SQLContext(data=gf)
     
-    st.write(participant_guid.columns)
+    st.write(participant_guid("participant_guid"))
     
     # st.header('Find row(s) by:')
     
