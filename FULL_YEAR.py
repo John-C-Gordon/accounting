@@ -66,7 +66,7 @@ if authentication_status == True:
     
     ctx = pl.SQLContext(data=gf)
     
-    st.dataframe(pl.Series(conn.query('select participant_guid from additional_fields;', ttl=0)))
+    st.write(pl.Series(conn.query('select participant_guid from additional_fields;', ttl=0)))
     
     # st.header('Find row(s) by:')
     
