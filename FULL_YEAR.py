@@ -72,7 +72,7 @@ if authentication_status == True:
     
     ctx = pl.SQLContext(data=gf)
     
-    st.write(gf["Appointment Date"])
+    st.write(gf["Appointment Date"][0])
     
     # st.header('Find row(s) by:')
     
