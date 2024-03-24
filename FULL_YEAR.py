@@ -79,7 +79,7 @@ if authentication_status == True:
     end_date = datetime(2023, 12, 31, 0)
     # gf = gf.with_columns(pl.when(pl.col("Appointment Date") > end_date).then(True).otherwise(False).alias("Earned"))
     
-    # st.dataframe(gf.head())
+    st.dataframe(participant_guid.head())
     
     # st.header('Find row(s) by:')
     
