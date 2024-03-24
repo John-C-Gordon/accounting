@@ -73,7 +73,7 @@ if authentication_status == True:
     
     ctx = pl.SQLContext(data=gf)
     st.write(ctx.execute('''
-    SELECT (`Appointment Date` > '2023-01-31 00:00:00') AS earned
+    SELECT `Appointment Date` IF(`Appointment Date` < '2023-01-31 00:00:00', TRUE, FALSE) AS earned
     FROM data;
     '''))
     
