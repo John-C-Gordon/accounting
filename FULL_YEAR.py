@@ -72,7 +72,7 @@ if authentication_status == True:
     gf = gf.with_columns(pl.when(pl.col("Appointment Date") > end_date).then(True).otherwise(False).alias("Earned"))
     
     ctx = pl.SQLContext(data=gf)
-    st.write(ctx.execute('''
+    st.dataframe(ctx.execute('''
 SELECT *, (`Appointment Date` > '2023-05-31 00:00:00')
 AS `ernie` FROM data;
 '''))
