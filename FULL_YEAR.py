@@ -69,13 +69,9 @@ if authentication_status == True:
     gf.insert_column(7, pl.Series(appt_codes["Appointment_Code"]))
     
     end_date = datetime(2023, 12, 31, 0)
-    gf.insert_column(8, pl.Series(gf["Appointment Date"] > end_date).alias("earned")
+    gf.insert_column(8, pl.Series(gf["Appointment Date"] > end_date)).alias("earned")
     
     ctx = pl.SQLContext(data=gf)
-    st.write(ctx.execute('''
-    SELECT `Appointment Date`, IF(`Appointment Date` < '2023-01-31 00:00:00', TRUE, FALSE) AS earned
-    FROM data;
-    '''))
     
     st.write(gf)
     
