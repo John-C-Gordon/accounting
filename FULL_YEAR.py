@@ -67,12 +67,13 @@ if authentication_status == True:
     gf.insert_column(5, pl.Series(participant_guid["participant_guid"]))
     gf.insert_column(6, pl.Series(order_guid["order_guid"]))
     gf.insert_column(7, pl.Series(appt_codes["Appointment_Code"]))
-    # gf.with_columns(pd.to_datetime(pl.col("Appointment Date")).alias("data"))
+    
     end_date = datetime(2023, 12, 31, 0)
+    gf.with_columns(8, pl.Series(gf["Appointment Date"] > end_date))
     
     ctx = pl.SQLContext(data=gf)
     
-    st.write(pl.Series(gf["Appointment Date"]))
+    st.write(gf)
     
     # st.header('Find row(s) by:')
     
