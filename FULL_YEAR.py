@@ -78,7 +78,7 @@ SELECT *,
         WHEN (`Appointment Date` < '2023-12-31 00:00:00') THEN 'True'
         ELSE 'False
     END) AS Earned_Income
-FROM data_pull
+FROM data;
 '''))
     
     st.dataframe(gf)
