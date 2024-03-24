@@ -69,7 +69,7 @@ if authentication_status == True:
     gf.insert_column(7, pl.Series(appt_codes["Appointment_Code"]))
     
     end_date = datetime(2023, 5, 31, 0)
-    gf = gf.with_columns(pl.when(pl.col("Appointment Date") > end_date).then(0).otherwise(1).alias("Earned"))
+    gf = gf.with_columns(pl.when(pl.col("Appointment Date") > end_date).then(True).otherwise(False).alias("Earned"))
     
     ctx = pl.SQLContext(data=gf)
     
