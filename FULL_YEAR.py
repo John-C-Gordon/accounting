@@ -66,7 +66,7 @@ if authentication_status == True:
     appt_codes = conn.query('select * from appt_codes LIMIT 10;', ttl=0)
     gf.insert_column(5, pl.Series(participant_guid["participant_guid"]))
     gf.insert_column(6, pl.Series(order_guid["order_guid"]))
-    gf.insert_column(7, pl.Series(appt_codes["Apointment_Code"]))
+    gf.insert_column(7, pl.Series(appt_codes["Appointment_Code"]))
     
     ctx = pl.SQLContext(data=gf)
     
