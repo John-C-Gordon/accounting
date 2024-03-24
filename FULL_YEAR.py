@@ -57,7 +57,7 @@ if authentication_status == True:
     
     # @st.cache_data
     # def get_gf():
-    #     gf = pl.DataFrame(conn.query('select * from data_pull;', ttl=0))
+    gf = pl.DataFrame(conn.query('select * from data_pull;', ttl=0))
         # participant_guid = conn.query('select participant_guid from additional_fields;', ttl=0)
         # order_guid = conn.query('select order_guid from additional_fields;', ttl=0)
         # appt_codes = conn.query('select * from appt_codes;', ttl=0)
@@ -72,14 +72,14 @@ if authentication_status == True:
     participant_guid = conn.query('select participant_guid from additional_fields;', ttl=0)
     order_guid = conn.query('select order_guid from additional_fields;', ttl=0)
     appt_codes = conn.query('select * from appt_codes;', ttl=0)
-    # gf.insert_column(5, pl.Series(participant_guid["participant_guid"]))
-    # gf.insert_column(6, pl.Series(order_guid["order_guid"]))
-    # gf.insert_column(7, pl.Series(appt_codes["Appointment_Code"]))
+    gf.insert_column(5, pl.Series(participant_guid["participant_guid"]))
+    gf.insert_column(6, pl.Series(order_guid["order_guid"]))
+    gf.insert_column(7, pl.Series(appt_codes["Appointment_Code"]))
     
     end_date = datetime(2023, 12, 31, 0)
-    # gf = gf.with_columns(pl.when(pl.col("Appointment Date") > end_date).then(True).otherwise(False).alias("Earned"))
+    gf = gf.with_columns(pl.when(pl.col("Appointment Date") > end_date).then(True).otherwise(False).alias("Earned"))
     
-    st.dataframe(participant_guid.head())
+    st.dataframe(gf.head())
     
     # st.header('Find row(s) by:')
     
