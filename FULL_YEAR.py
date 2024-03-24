@@ -76,7 +76,7 @@ if authentication_status == True:
 SELECT *,
     (CASE
         WHEN (`Appointment Date` < '2023-12-31 00:00:00') THEN 'True'
-        ELSE 'False
+        ELSE 'False'
     END) AS Earned_Income
 FROM data;
 '''))
