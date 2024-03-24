@@ -75,7 +75,7 @@ if authentication_status == True:
     st.write(ctx.execute('''
 SELECT *,
     (CASE
-        WHEN (`Appointment Date` < '2023-15-31 00:00:00') THEN 'True'
+        WHEN (`Appointment Date` < '2023-05-31 00:00:00') THEN 'True'
         ELSE 'False'
     END) AS Earned_Income
 FROM data;
