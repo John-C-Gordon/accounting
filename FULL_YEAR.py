@@ -74,7 +74,7 @@ if authentication_status == True:
     ctx = pl.SQLContext(data=gf)
     st.write(ctx.execute('''
 SELECT *, (`Appointment Date` > '2023-05-31 00:00:00')
-AS ernie` FROM data;
+AS `ernie` FROM data;
 '''))
     
     st.dataframe(gf)
