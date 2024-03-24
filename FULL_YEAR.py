@@ -70,7 +70,7 @@ if authentication_status == True:
     
     ctx = pl.SQLContext(data=gf)
     
-    st.dataframe(gf.head())
+    st.write(datetime(gf["Appointment Date"])
     
     # st.header('Find row(s) by:')
     
