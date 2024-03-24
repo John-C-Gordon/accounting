@@ -73,12 +73,8 @@ if authentication_status == True:
     
     ctx = pl.SQLContext(data=gf)
     st.write(ctx.execute('''
-SELECT *,
-    (CASE
-        WHEN (`Appointment Date` < '2023-05-31 00:00:00') THEN 'True'
-        ELSE 'False'
-    END) AS Earned_Income
-FROM data;
+SELECT `Appointment Date`, (`Appointment Date` > '2023-05-31 00:00:00')
+AS `Appointment Date`, `ernie` FROM data;
 '''))
     
     st.dataframe(gf)
