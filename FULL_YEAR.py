@@ -61,7 +61,7 @@ if authentication_status == True:
         return gf
     gf = get_gf()
 
-    participant_guid = conn.query('select participant_guid from additional_fields;', ttl=0)
+    participant_guid = conn.query('select participant_guid from additional_fields LIMIT 10;', ttl=0)
     gf.insert_column(5, pl.Series(participant_guid["participant_guid"]))
     
     ctx = pl.SQLContext(data=gf)
