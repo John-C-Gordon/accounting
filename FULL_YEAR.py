@@ -66,7 +66,7 @@ if authentication_status == True:
     
     ctx = pl.SQLContext(data=gf)
     
-    st.DataFrame(gf.head())
+    st.dataframe(gf.head())
     
     # st.header('Find row(s) by:')
     
