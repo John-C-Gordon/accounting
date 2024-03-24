@@ -62,11 +62,13 @@ if authentication_status == True:
     gf = get_gf()
 
     participant_guid = conn.query('select participant_guid from additional_fields LIMIT 10;', ttl=0)
+    order_guid = conn.query('select order_guid from additional_fields LIMIT 10;', ttl=0)
     gf.insert_column(5, pl.Series(participant_guid["participant_guid"]))
+    gf.insert_column(6, pl.Series(participant_guid["order_guid"]))
     
     ctx = pl.SQLContext(data=gf)
     
-    st.dataframe(conn.query('select * from additional_fields LIMIT 10;', ttl=0))
+    st.dataframe(gf.head())
     
     # st.header('Find row(s) by:')
     
