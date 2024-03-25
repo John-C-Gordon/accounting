@@ -109,6 +109,6 @@ if authentication_status == True:
     if len(fields) != 0:
         if submitted:
             st.write(s[:-1])
-            st.write('''SELECT * FROM data WHERE {}'''.format(s[:-1]))
+            st.write(ctx.execute('''SELECT * FROM data WHERE {}'''.format(s[:-1]))
             # st.success("{} rows returned.".format(len(gf.query("{}".format(s[:-1])).index)))
 
