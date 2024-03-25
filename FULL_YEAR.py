@@ -83,29 +83,29 @@ if authentication_status == True:
         for i in gf.columns[4:8]:
             option = st.text_input('{}:'.format(i), key='{}'.format(i))
     
-    # for i in st.session_state:
-    #     if i not in ["username", "init", "failed_login_attempts",
-    #     "authentication_status", "name", "logout"]: # want to ignore the login session states
-    #         if st.session_state['{}'.format(i)]:
-    #             dict = {'{}'.format(i): str(st.session_state['{}'.format(i)])}
-    #             fields.update(dict)
+    for i in st.session_state:
+        if i not in ["username", "init", "failed_login_attempts",
+        "authentication_status", "name", "logout"]: # want to ignore the login session states
+            if st.session_state['{}'.format(i)]:
+                dict = {'{}'.format(i): str(st.session_state['{}'.format(i)])}
+                fields.update(dict)
     
-    # # s = ""
+    s = ""
     
-    # # for i in range(len(fields)):
-    # #     if list(fields.keys())[i] == ('Amount Paid') or list(fields.keys())[i] == ('Earned'):
-    # #         s += '`' + (str(list(fields.keys())[i]) + '`' + "==" + str(list(fields.values())[i]) + " &")
-    # #     elif list(fields.keys())[i] != (('Amount Paid') or list(fields.keys())[i] != ('Earned')):
-    # #         s += '`' + (str(list(fields.keys())[i])) + '`' + "==" + "'" + str(list(fields.values())[i]) + "'" + " &"
-    # # button1, button2, button3 = st.columns([1, 1, 1])
-    # # with button1:
-    # #     submitted = st.button('Search', type="primary")   
+    for i in range(len(fields)):
+        if list(fields.keys())[i] == ('Amount Paid') or list(fields.keys())[i] == ('Earned'):
+            s += '`' + (str(list(fields.keys())[i]) + '`' + "==" + str(list(fields.values())[i]) + " &")
+        elif list(fields.keys())[i] != (('Amount Paid') or list(fields.keys())[i] != ('Earned')):
+            s += '`' + (str(list(fields.keys())[i])) + '`' + "==" + "'" + str(list(fields.values())[i]) + "'" + " &"
+    button1, button2, button3 = st.columns([1, 1, 1])
+    with button1:
+        submitted = st.button('Search', type="primary")   
     
-    # # if len(fields) == 0:
-    # #     st.warning('Please enter at least one (1) of the above fields.')
-    # # if len(fields) != 0:
-    # #     if submitted:
-    # #         # st.write(s[:-1])
+    if len(fields) == 0:
+        st.warning('Please enter at least one (1) of the above fields.')
+    if len(fields) != 0:
+        if submitted:
+            # st.write(s[:-1])
     # #         st.dataframe(gf.query("{}".format(s[:-1])))
     # #         st.success("{} rows returned.".format(len(gf.query("{}".format(s[:-1])).index)))
 
