@@ -69,7 +69,7 @@ if authentication_status == True:
         return gf
     gf = get_gf()
     
-    st.dataframe(gf.head())
+    # st.dataframe(gf.head())
     
     st.header('Find row(s) by:')
     
