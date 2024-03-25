@@ -110,5 +110,5 @@ if authentication_status == True:
     if len(fields) != 0:
         if submitted:
             st.dataframe(ctx.execute('''SELECT * FROM data WHERE {}'''.format(s[:-3]), eager=True))
-            st.write('{}'.format(ctx.execute('''SELECT * FROM data WHERE {}'''.format(s[:-3]).head)
+            st.write('{}'.format(ctx.execute('''SELECT * FROM data WHERE {}'''.format(s[:-3]).head)))
 
