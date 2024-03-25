@@ -64,8 +64,8 @@ if authentication_status == True:
         # gf.insert_column(5, pl.Series(participant_guid["participant_guid"]))
         # gf.insert_column(6, pl.Series(order_guid["order_guid"]))
         gf.with_columns(pl.col('Appointment Date').str.strptime(pl.Datetime, format="%Y-%m-%d %H:%M:%S", strict=False).cast(pl.Datetime))
-        # end_date = datetime(2023, 12, 31, 0)
-        # gf = gf.with_columns(pl.when(pl.col("Appointment Date") < end_date).then(True).otherwise(False).alias("Earned"))
+        end_date = datetime(2023, 12, 31, 0)
+        gf = gf.with_columns(pl.when(pl.col("Appointment Date") < end_date).then(True).otherwise(False).alias("Earned"))
         return gf
     gf = get_gf()
     
