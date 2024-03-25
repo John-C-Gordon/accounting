@@ -109,6 +109,6 @@ if authentication_status == True:
         if submitted:
             st.write(s[:-3])
             # st.dataframe(ctx.execute('''SELECT * FROM data WHERE {}'''.format(s[:-3]), eager=True))
-            st.write(ctx.execute('''SELECT * FROM data WHERE `Appointment Date` = "2023-04-17 10:30:00"''', eager=True))
+            st.write(ctx.execute('''SELECT * FROM data WHERE `Appointment Date` = '2023-04-17 10:30:00'''', eager=True))
             # st.success("{} rows returned.".format(len(gf.query("{}".format(s[:-1])).index)))
 
