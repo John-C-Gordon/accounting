@@ -57,7 +57,7 @@ if authentication_status == True:
     
     # @st.cache_data
     # def get_gf():
-    gf = pl.DataFrame(conn.query('select * from data_pull;', ttl=0))
+    gf = conn.query('select * from data_pull;', ttl=0)
         # participant_guid = conn.query('select participant_guid from additional_fields;', ttl=0)
         # order_guid = conn.query('select order_guid from additional_fields;', ttl=0)
         # appt_codes = conn.query('select * from appt_codes;', ttl=0)
