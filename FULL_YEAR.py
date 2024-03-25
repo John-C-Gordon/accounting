@@ -71,17 +71,17 @@ if authentication_status == True:
     
     st.dataframe(gf.head())
     
-    # st.header('Find row(s) by:')
+    st.header('Find row(s) by:')
     
-    # fields = {}
+    fields = {}
     
-    # col1, col2 = st.columns(2)
-    # with col1:
-    #     for i in gf.columns[0:4]:
-    #         option = st.text_input('{}:'.format(i), key='{}'.format(i))
-    # with col2:
-    #     for i in gf.columns[4:8]:
-    #         option = st.text_input('{}:'.format(i), key='{}'.format(i))
+    col1, col2 = st.columns(2)
+    with col1:
+        for i in gf.columns[0:4]:
+            option = st.text_input('{}:'.format(i), key='{}'.format(i))
+    with col2:
+        for i in gf.columns[4:8]:
+            option = st.text_input('{}:'.format(i), key='{}'.format(i))
     
     # for i in st.session_state:
     #     if i not in ["username", "init", "failed_login_attempts",
