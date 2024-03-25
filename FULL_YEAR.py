@@ -67,7 +67,7 @@ if authentication_status == True:
         # end_date = datetime(2023, 12, 31, 0)
         # gf = gf.with_columns(pl.when(pl.col("Appointment Date") > end_date).then(True).otherwise(False).alias("Earned"))
         return gf
-    # gf = get_gf()
+    gf = get_gf()
     
     end_date = datetime(2023, 12, 31, 0)
     # gf = gf.with_columns(pl.when(pl.col("Appointment Date") > end_date).then(True).otherwise(False).alias("Earned"))
