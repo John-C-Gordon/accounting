@@ -101,11 +101,14 @@ if authentication_status == True:
     with button1:
         submitted = st.button('Search', type="primary")   
     
+    ctx = pl.SQLContext(data=gf)
+    
+
     if len(fields) == 0:
         st.warning('Please enter at least one (1) of the above fields.')
     if len(fields) != 0:
         if submitted:
             st.write(s[:-1])
-            st.dataframe(gf.query("{}".format(s[:-1])))
+            st.dataframe(ctx.execute('''SELECT * FROM data WHERE {}'''.format(s[:-1])))
             st.success("{} rows returned.".format(len(gf.query("{}".format(s[:-1])).index)))
 
