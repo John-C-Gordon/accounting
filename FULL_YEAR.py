@@ -79,8 +79,8 @@ if authentication_status == True:
     with col1:
         for i in gf.columns[2:4]:
             option = st.text_input('{}:'.format(i), key='{}'.format(i))
-        for i in gf.columns[0]:
-            option = st.text_input('{}:'.format(i), key='{}'.format(i))
+        
+        option = st.text_input('Amount Paid:', key='Amount Paid')
     with col2:
         for i in gf.columns[4:8]:
             option = st.text_input('{}:'.format(i), key='{}'.format(i))
