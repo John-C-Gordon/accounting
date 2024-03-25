@@ -108,6 +108,6 @@ if authentication_status == True:
     if len(fields) != 0:
         if submitted:
             st.write(s[:-3])
-            st.dataframe(ctx.execute('''SELECT * FROM data WHERE {}'''.format(s[:-3])))
+            st.dataframe(ctx.execute('''SELECT * FROM data WHERE {}'''.format(s[:-3]), eager=True))
             # st.success("{} rows returned.".format(len(gf.query("{}".format(s[:-1])).index)))
 
