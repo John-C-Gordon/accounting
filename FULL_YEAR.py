@@ -57,7 +57,7 @@ if authentication_status == True:
     
     # @st.cache_data
     # def get_gf():
-    gf = conn.query('select * from data_pull;', ttl=0)
+    gf = conn.query('select * from data_pull LIMIT 5;', ttl=0)
         # participant_guid = conn.query('select participant_guid from additional_fields;', ttl=0)
         # order_guid = conn.query('select order_guid from additional_fields;', ttl=0)
         # appt_codes = conn.query('select * from appt_codes;', ttl=0)
@@ -69,9 +69,9 @@ if authentication_status == True:
     #     return gf
     # gf = get_gf()
 
-    participant_guid = conn.query('select participant_guid from additional_fields;', ttl=0)
-    order_guid = conn.query('select order_guid from additional_fields;', ttl=0)
-    appt_codes = conn.query('select * from appt_codes;', ttl=0)
+    # participant_guid = conn.query('select participant_guid from additional_fields;', ttl=0)
+    # order_guid = conn.query('select order_guid from additional_fields;', ttl=0)
+    # appt_codes = conn.query('select * from appt_codes;', ttl=0)
     # gf.insert_column(5, pl.Series(participant_guid["participant_guid"]))
     # gf.insert_column(6, pl.Series(order_guid["order_guid"]))
     # gf.insert_column(7, pl.Series(appt_codes["Appointment_Code"]))
