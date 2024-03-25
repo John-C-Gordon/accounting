@@ -94,9 +94,9 @@ if authentication_status == True:
     
     for i in range(len(fields)):
         if list(fields.keys())[i] == ('Amount Paid') or list(fields.keys())[i] == ('Earned'):
-            s += '`' + (str(list(fields.keys())[i]) + '`' + "==" + str(list(fields.values())[i]) + " &")
+            s += '`' + (str(list(fields.keys())[i]) + '`' + "==" + str(list(fields.values())[i]) + " AND")
         elif list(fields.keys())[i] != (('Amount Paid') or list(fields.keys())[i] != ('Earned')):
-            s += '`' + (str(list(fields.keys())[i])) + '`' + "==" + "'" + str(list(fields.values())[i]) + "'" + " &"
+            s += '`' + (str(list(fields.keys())[i])) + '`' + "==" + "'" + str(list(fields.values())[i]) + "'" + " AND"
     button1, button2, button3 = st.columns([1, 1, 1])
     with button1:
         submitted = st.button('Search', type="primary")   
@@ -110,5 +110,5 @@ if authentication_status == True:
         if submitted:
             st.write(s[:-1])
             st.write('''SELECT * FROM data WHERE {}'''.format(s[:-1]))
-            st.success("{} rows returned.".format(len(gf.query("{}".format(s[:-1])).index)))
+            # st.success("{} rows returned.".format(len(gf.query("{}".format(s[:-1])).index)))
 
