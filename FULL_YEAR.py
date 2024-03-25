@@ -102,6 +102,7 @@ if authentication_status == True:
         submitted = st.button('Search', type="primary")   
     
     ctx = pl.SQLContext(data=gf)
+    cursor = conn.cursor()
     
 
     if len(fields) == 0:
@@ -109,6 +110,6 @@ if authentication_status == True:
     if len(fields) != 0:
         if submitted:
             st.write(s[:-3])
-            st.dataframe(ctx.execute('''SELECT * FROM data WHERE {}'''.format(s[:-3]))
+            st.dataframe(cursor.execute('''SELECT * FROM data WHERE {}'''.format(s[:-3]))
             # st.success("{} rows returned.".format(len(gf.query("{}".format(s[:-1])).index)))
 
