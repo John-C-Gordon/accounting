@@ -93,7 +93,7 @@ if authentication_status == True:
     s = ""
     
     for i in range(len(fields)):
-        if list(fields.keys())[i] == ('Amount Paid') or list(fields.keys())[i] == ('Earned'):
+        if list(fields.keys())[i] == ('Amount Paid') or list(fields.keys())[i] == ('Earned') or list(fields.keys())[i] == ('Appointment Date'):
             s += '`' + (str(list(fields.keys())[i]) + '`' + "==" + str(list(fields.values())[i]) + " AND")
         elif list(fields.keys())[i] != (('Amount Paid') or list(fields.keys())[i] != ('Earned')):
             s += '`' + (str(list(fields.keys())[i])) + '`' + "==" + "'" + str(list(fields.values())[i]) + "'" + " AND"
