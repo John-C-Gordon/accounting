@@ -106,6 +106,6 @@ if authentication_status == True:
     if len(fields) != 0:
         if submitted:
             st.write(s[:-1])
-    # #         st.dataframe(gf.query("{}".format(s[:-1])))
-    # #         st.success("{} rows returned.".format(len(gf.query("{}".format(s[:-1])).index)))
+            st.dataframe(gf.query("{}".format(s[:-1])))
+            st.success("{} rows returned.".format(len(gf.query("{}".format(s[:-1])).index)))
 
