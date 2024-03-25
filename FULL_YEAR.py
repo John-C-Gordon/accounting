@@ -108,7 +108,7 @@ if authentication_status == True:
         st.warning('Please enter at least one (1) of the above fields.')
     if len(fields) != 0:
         if submitted:
-            st.write(s[:-1])
+            st.write(s[:-3])
             # st.write(ctx.execute('''SELECT * FROM data WHERE {}'''.format(s[:-1]))
             # st.success("{} rows returned.".format(len(gf.query("{}".format(s[:-1])).index)))
 
