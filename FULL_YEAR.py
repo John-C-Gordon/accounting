@@ -77,7 +77,7 @@ if authentication_status == True:
     
     col1, col2 = st.columns(2)
     with col1:
-        for i in gf.columns[2:4]:
+        for i in (gf.columns[2:4] + gf.columns[0]):
             option = st.text_input('{}:'.format(i), key='{}'.format(i))
     with col2:
         for i in gf.columns[4:8]:
@@ -93,7 +93,7 @@ if authentication_status == True:
     s = ""
     
     for i in range(len(fields)):
-        if list(fields.keys())[i] == ('Amount Paid') or list(fields.keys())[i] == ('Earned') or list(fields.keys())[i] == ('Appointment Date'):
+        if list(fields.keys())[i] == ('Amount Paid') or list(fields.keys())[i] == ('Earned'):
             s += '`' + (str(list(fields.keys())[i]) + '`' + "==" + str(list(fields.values())[i]) + " AND")
         elif list(fields.keys())[i] != (('Amount Paid') or list(fields.keys())[i] != ('Earned')):
             s += '`' + (str(list(fields.keys())[i])) + '`' + "==" + "'" + str(list(fields.values())[i]) + "'" + " AND"
