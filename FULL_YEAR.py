@@ -57,7 +57,7 @@ if authentication_status == True:
     
     @st.cache_data
     def get_gf():
-        gf = pl.DataFrame(conn.query('select * from data_pull LIMIT 5;', ttl=0))
+        gf = pl.DataFrame(conn.query('select * from data_pull;', ttl=0))
         # participant_guid = conn.query('select participant_guid from additional_fields;', ttl=0)
         # order_guid = conn.query('select order_guid from additional_fields;', ttl=0)
         # appt_codes = conn.query('select * from appt_codes;', ttl=0)
@@ -109,7 +109,6 @@ if authentication_status == True:
         st.warning('Please enter at least one (1) of the above fields.')
     if len(fields) != 0:
         if submitted:
-            st.write(s[:-3])
             st.dataframe(ctx.execute('''SELECT * FROM data WHERE {}'''.format(s[:-3]), eager=True))
             # st.success("{} rows returned.".format(len(gf.query("{}".format(s[:-1])).index)))
 
