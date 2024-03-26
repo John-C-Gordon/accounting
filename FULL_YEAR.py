@@ -69,8 +69,8 @@ if authentication_status == True:
         return gf
     gf = get_gf()
 
-    with st.sidebar:
-        selected = option_menu(menu_title=None, options=['Analysis', 'Search', 'Smart Query'], orientation='horizontal') 
+    
+    selected = option_menu(menu_title=None, options=['Analysis', 'Search', 'Smart Query'], orientation='horizontal',) 
     # st.dataframe(gf.head())
     
     st.header('Find row(s) by:')
