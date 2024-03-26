@@ -7,7 +7,7 @@ from datetime import datetime
 # from pandasai.responses.response_parser import ResponseParser
 import pymysql
 import mysql.connector
-# from streamlit_option_menu import option_menu
+from streamlit_option_menu import option_menu
 import streamlit_authenticator as stauth
 import polars as pl
 
@@ -68,7 +68,8 @@ if authentication_status == True:
         gf = gf.with_columns(pl.when(pl.col("Appointment Date") < end_date).then(True).otherwise(False).alias("Earned"))
         return gf
     gf = get_gf()
-    
+
+    selected = option_menu(menu_title=None, options=['Analysis', 'Search', 'Smart Query'], orientation='horizontal') 
     # st.dataframe(gf.head())
     
     st.header('Find row(s) by:')
