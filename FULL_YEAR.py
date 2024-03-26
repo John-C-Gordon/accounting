@@ -115,6 +115,6 @@ if authentication_status == True:
                 st.dataframe(ctx.execute('''SELECT * FROM data WHERE {}'''.format(s[:-3]), eager=True))
                 # st.write('{}'.format(ctx.execute('''SELECT * FROM data WHERE {}'''.format(s[:-3]).head)))
     if selected == 'Analysis':
-        df_monthly = (gf.group_by("Payment Type").agg(pl.col("Amount Paid").mean().alias("mean paid")))
+        df_monthly = (gf.group_by("Earned").agg(pl.col("Amount Paid").sum().alias("Total Revenue")))
         st.dataframe(df_monthly)
 
