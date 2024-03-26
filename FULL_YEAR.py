@@ -70,7 +70,7 @@ if authentication_status == True:
     gf = get_gf()
 
     
-    selected = option_menu(menu_title=None, options=['Analysis', 'Search', 'Smart Query'], icons=['table', 'search', 'table'], orientation='horizontal',) 
+    selected = option_menu(menu_title=None, options=['Analysis', 'Search', 'Smart Query'], icons=['clipboard2-data', 'search', 'magic'], orientation='horizontal',) 
     # st.dataframe(gf.head())
     if selected == 'Search':
     
