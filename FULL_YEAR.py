@@ -70,7 +70,7 @@ if authentication_status == True:
     gf = get_gf()
 
     
-    selected = option_menu(menu_title=None, options=['Analysis', 'Search', 'Smart Query'], orientation='horizontal',) 
+    selected = option_menu(menu_title=None, options=['Analysis', 'Search', 'Smart Query'], icons=['table', 'search', 'table'], orientation='horizontal',) 
     # st.dataframe(gf.head())
     
     st.header('Find row(s) by:')
