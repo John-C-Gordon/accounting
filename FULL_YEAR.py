@@ -72,45 +72,46 @@ if authentication_status == True:
     
     selected = option_menu(menu_title=None, options=['Analysis', 'Search', 'Smart Query'], icons=['table', 'search', 'table'], orientation='horizontal',) 
     # st.dataframe(gf.head())
+    if selected == 'Search':
     
-    st.header('Find row(s) by:')
-    
-    fields = {}
-    
-    col1, col2 = st.columns(2)
-    with col1:
-        for i in gf.columns[2:4]:
-            option = st.text_input('{}:'.format(i), key='{}'.format(i))
+        st.header('Find row(s) by:')
         
-        option = st.text_input('Amount Paid:', key='Amount Paid')
-    with col2:
-        for i in gf.columns[4:8]:
-            option = st.text_input('{}:'.format(i), key='{}'.format(i))
-    
-    for i in st.session_state:
-        if i not in ["username", "init", "failed_login_attempts",
-        "authentication_status", "name", "logout"]: # want to ignore the login session states
-            if st.session_state['{}'.format(i)]:
-                dict = {'{}'.format(i): str(st.session_state['{}'.format(i)])}
-                fields.update(dict)
-    
-    s = ""
-    
-    for i in range(len(fields)):
-        if list(fields.keys())[i] == ('Amount Paid') or list(fields.keys())[i] == ('Earned'):
-            s += '`' + (str(list(fields.keys())[i]) + '`' + "==" + str(list(fields.values())[i]) + " AND")
-        elif list(fields.keys())[i] != (('Amount Paid') or list(fields.keys())[i] != ('Earned')):
-            s += '`' + (str(list(fields.keys())[i])) + '`' + "==" + "'" + str(list(fields.values())[i]) + "'" + " AND"
-    button1, button2, button3 = st.columns([1, 1, 1])
-    with button1:
-        submitted = st.button('Search', type="primary")   
-    
-    ctx = pl.SQLContext(data=gf)
-    
-    if len(fields) == 0:
-        st.warning('Please enter at least one (1) of the above fields.')
-    if len(fields) != 0:
-        if submitted:
-            st.dataframe(ctx.execute('''SELECT * FROM data WHERE {}'''.format(s[:-3]), eager=True))
-            # st.write('{}'.format(ctx.execute('''SELECT * FROM data WHERE {}'''.format(s[:-3]).head)))
+        fields = {}
+        
+        col1, col2 = st.columns(2)
+        with col1:
+            for i in gf.columns[2:4]:
+                option = st.text_input('{}:'.format(i), key='{}'.format(i))
+            
+            option = st.text_input('Amount Paid:', key='Amount Paid')
+        with col2:
+            for i in gf.columns[4:8]:
+                option = st.text_input('{}:'.format(i), key='{}'.format(i))
+        
+        for i in st.session_state:
+            if i not in ["username", "init", "failed_login_attempts",
+            "authentication_status", "name", "logout"]: # want to ignore the login session states
+                if st.session_state['{}'.format(i)]:
+                    dict = {'{}'.format(i): str(st.session_state['{}'.format(i)])}
+                    fields.update(dict)
+        
+        s = ""
+        
+        for i in range(len(fields)):
+            if list(fields.keys())[i] == ('Amount Paid') or list(fields.keys())[i] == ('Earned'):
+                s += '`' + (str(list(fields.keys())[i]) + '`' + "==" + str(list(fields.values())[i]) + " AND")
+            elif list(fields.keys())[i] != (('Amount Paid') or list(fields.keys())[i] != ('Earned')):
+                s += '`' + (str(list(fields.keys())[i])) + '`' + "==" + "'" + str(list(fields.values())[i]) + "'" + " AND"
+        button1, button2, button3 = st.columns([1, 1, 1])
+        with button1:
+            submitted = st.button('Search', type="primary")   
+        
+        ctx = pl.SQLContext(data=gf)
+        
+        if len(fields) == 0:
+            st.warning('Please enter at least one (1) of the above fields.')
+        if len(fields) != 0:
+            if submitted:
+                st.dataframe(ctx.execute('''SELECT * FROM data WHERE {}'''.format(s[:-3]), eager=True))
+                # st.write('{}'.format(ctx.execute('''SELECT * FROM data WHERE {}'''.format(s[:-3]).head)))
 
