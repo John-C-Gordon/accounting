@@ -136,6 +136,6 @@ if authentication_status == True:
         #         title_opts=opts.TitleOpts(title="Bar-旋转X轴标签", subtitle="解决标签名字过长的问题"),
         #     )
         # )
-        st_pyecharts(c)
+        # st_pyecharts(c)
         st.write([gf.group_by("Payment Type").agg(pl.col("Amount Paid").sum().alias("Total Revenue"))['Payment Type']])
 
