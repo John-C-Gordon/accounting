@@ -157,7 +157,7 @@ if authentication_status == True:
                 label_opts=opts.LabelOpts(is_show=True),
             )
             .set_global_opts(title_opts=opts.TitleOpts(title="Earned vs. Unearned Revenue"))
-            .set_series_opts(label_opts=opts.LabelOpts(formatter="${:.5%}".format(c)))
+            .set_series_opts(label_opts=opts.LabelOpts(formatter="${}".format(c)))
             .render_embed()
         )
         with col2:
