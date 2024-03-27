@@ -125,10 +125,11 @@ if authentication_status == True:
     if selected == 'Analysis':
         earned_unearned = gf.group_by("Earned").agg(pl.col("Amount Paid").sum().alias("Total Revenue"))
         col1, col2 = st.columns(2)
-
+        with col1:
+            st.dataframe(earned_unearned)
         
         unearned_payment_types = gf.filter(pl.col("Earned") == False).group_by("Payment Type").agg(pl.col("Amount Paid").sum().alias("Total Revenue"))
-        earned_payment_types = gf.filter(pl.col("Earned") == False).group_by("Payment Type").agg(pl.col("Amount Paid").sum().alias("Total Revenue"))
+        earned_payment_types = gf.filter(pl.col("Earned") == True).group_by("Payment Type").agg(pl.col("Amount Paid").sum().alias("Total Revenue"))
         c = (
             Bar(init_opts=opts.InitOpts(theme=ThemeType.SHINE))
             .add_xaxis(
@@ -147,7 +148,7 @@ if authentication_status == True:
             .add(
                 "Earned vs. Unearned Revenue",
                 [list(z) for z in zip(earned_unearned["Earned"].to_list(), earned_unearned["Total Revenue"].to_list())],
-                radius=["25%", "50%"],
+                # radius=["25%", "50%"],
                 center=["25%", "35%"],
                 label_opts=opts.LabelOpts(is_show=True),
             )
@@ -159,5 +160,3 @@ if authentication_status == True:
             components.html(f, width=1100, height=350, scrolling=False)
         with st.container():
             components.html(c, width=1100, height=550, scrolling=True)
-            st.write(gf.filter(pl.col("Earned") == False).group_by("Payment Type").agg(pl.col("Amount Paid").sum().alias("Total Revenue")))
-            
