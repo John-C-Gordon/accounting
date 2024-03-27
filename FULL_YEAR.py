@@ -135,8 +135,7 @@ if authentication_status == True:
                     xaxis_opts=opts.AxisOpts(axislabel_opts=opts.LabelOpts(rotate=-15)),
                     title_opts=opts.TitleOpts(title="Bar-旋转X轴标签", subtitle="解决标签名字过长的问题"),
                 )
-                .render("bar_rotate_xaxis_label.html")
             )
-
+            st_pyecharts(c)
         # with col2:
 
