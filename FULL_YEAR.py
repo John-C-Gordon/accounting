@@ -128,8 +128,8 @@ if authentication_status == True:
         with col1:
             st.dataframe(earned_unearned)
         
-        unearned_payment_types = gf.sort("Payment Type').filter(pl.col("Earned") == False).group_by("Payment Type").agg(pl.col("Amount Paid").sum().alias("Total Revenue"))
-        earned_payment_types = gf.sort("Payment Type).filter(pl.col("Earned") == True).group_by("Payment Type").agg(pl.col("Amount Paid").sum().alias("Total Revenue"))
+        unearned_payment_types = gf.sort("Payment Type").filter(pl.col("Earned") == False).group_by("Payment Type").agg(pl.col("Amount Paid").sum().alias("Total Revenue"))
+        earned_payment_types = gf.sort("Payment Type").filter(pl.col("Earned") == True).group_by("Payment Type").agg(pl.col("Amount Paid").sum().alias("Total Revenue"))
         c = (
             Bar(init_opts=opts.InitOpts(theme=ThemeType.SHINE))
             .add_xaxis(
