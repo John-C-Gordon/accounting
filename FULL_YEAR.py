@@ -128,7 +128,8 @@ if authentication_status == True:
             
         with col1:
             st.dataframe(earned_unearned)
-        col2.metric = ("Temperature", "70 °F", "1.2 °F")
+        with col2:
+            st.metric = ("Temperature", "70 °F", "1.2 °F")
         payment_types = gf.group_by("Payment Type").agg(pl.col("Amount Paid").sum().alias("Total Revenue"))
         c = (
             Bar(init_opts=opts.InitOpts(theme=ThemeType.SHINE))
