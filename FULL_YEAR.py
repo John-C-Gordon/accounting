@@ -10,6 +10,8 @@ import mysql.connector
 from streamlit_option_menu import option_menu
 import streamlit_authenticator as stauth
 import polars as pl
+from pyecharts.charts import Bar
+from pyecharts.globals import ThemeType
 
 #TITLE
 
@@ -120,5 +122,5 @@ if authentication_status == True:
             
         with col1:
             st.dataframe(earned_unearned)
-        with col2:
+        # with col2:
 
