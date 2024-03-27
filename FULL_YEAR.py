@@ -13,7 +13,7 @@ import polars as pl
 from pyecharts.charts import Bar
 from pyecharts.globals import ThemeType
 from pyecharts import options as opts
-
+from streamlit_echarts import st_pyecharts
 #TITLE
 
 st.set_page_config(page_icon="📊", page_title="Accounting Data Query")
