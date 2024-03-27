@@ -138,4 +138,5 @@ if authentication_status == True:
             )
         )
         st_pyecharts(c)
+        st.write(gf.group_by("Payment Type").agg(pl.col("Amount Paid").sum().alias("Total Revenue")))
 
