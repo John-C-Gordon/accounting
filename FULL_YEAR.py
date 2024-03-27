@@ -149,6 +149,7 @@ if authentication_status == True:
                 [list(z) for z in zip(earned_unearned["Earned"].to_list(), earned_unearned["Total Revenue"].to_list())],
                 radius=["25%", "50%"],
                 center=["26%", "50%"],
+                center=["35%", "50%"],
                 label_opts=opts.LabelOpts(is_show=True),
             )
             .set_global_opts(title_opts=opts.TitleOpts(title="Earned vs. Unearned Revenue"))
@@ -159,6 +160,5 @@ if authentication_status == True:
             components.html(f, width=1100, height=350, scrolling=True)
         with st.container():
             components.html(c, width=1100, height=550, scrolling=True)
-            components.html(f, width=500, height=350, scrolling=False)
             st.write(gf.filter(pl.col("Earned") == False).group_by("Payment Type").agg(pl.col("Amount Paid").sum().alias("Total Revenue")))
             
