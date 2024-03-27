@@ -76,9 +76,9 @@ if authentication_status == True:
         return gf
     gf = get_gf()
 
-    
-    selected = option_menu(menu_title=None, options=['Analysis', 'Search', 'Smart Query'], icons=['clipboard2-data', 'search', 'magic'],
-                           default_index=1, orientation='horizontal', key='Menu') 
+    with st.sidebar:
+        selected = option_menu(menu_title=None, options=['Analysis', 'Search', 'Smart Query'], icons=['clipboard2-data', 'search', 'magic'],
+                           default_index=1, key='Menu') 
     # st.write(selected)
     if selected == 'Search':
     
