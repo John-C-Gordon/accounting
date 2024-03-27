@@ -163,4 +163,4 @@ if authentication_status == True:
             components.html(c, width=1100, height=550, scrolling=True)
 
     if selected == 'Smart Query':
-        st.header("[Coming soon]")
+        st.write("[Coming soon]")
