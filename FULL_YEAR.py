@@ -116,5 +116,8 @@ if authentication_status == True:
                 # st.write('{}'.format(ctx.execute('''SELECT * FROM data WHERE {}'''.format(s[:-3]).head)))
     if selected == 'Analysis':
         df_monthly = (gf.group_by("Earned").agg(pl.col("Amount Paid").sum().alias("Total Revenue")))
-        st.dataframe(df_monthly)
+        col1, col2, col3 = st.columns(3)
+            
+        with col1:
+            st.dataframe(df_monthly)
 
