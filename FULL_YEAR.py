@@ -74,7 +74,7 @@ if authentication_status == True:
 
     
     selected = option_menu(menu_title=None, options=['Analysis', 'Search', 'Smart Query'], icons=['clipboard2-data', 'search', 'magic'], orientation='horizontal',) 
-    # st.dataframe(gf.head())
+    st.dataframe(gf.head())
     if selected == 'Search':
     
         st.header('Find row(s) by:')
