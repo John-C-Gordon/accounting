@@ -16,6 +16,9 @@ from pyecharts import options as opts
 from streamlit_echarts import st_pyecharts
 import streamlit.components.v1 as components
 from pyecharts.globals import ThemeType
+import mimetypes
+mimetypes.add_type('application/javascript', '.js')
+mimetypes.add_type('text/css', '.css')
 
 #TITLE
 
