@@ -10,8 +10,8 @@ import mysql.connector
 from streamlit_option_menu import option_menu
 import streamlit_authenticator as stauth
 import polars as pl
-from pyecharts.charts import Bar
-from pyecharts.globals import ThemeType
+# from pyecharts.charts import Bar
+# from pyecharts.globals import ThemeType
 # from pyecharts import options as opts
 # from streamlit_echarts import st_pyecharts
 #TITLE
