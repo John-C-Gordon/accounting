@@ -124,7 +124,7 @@ if authentication_status == True:
                 
     if selected == 'Analysis':
         earned_unearned = gf.group_by("Earned").agg(pl.col("Amount Paid").sum().alias("Total Revenue"))
-        col1, col2, col3 = st.columns(3)
+        col1, col2 = st.columns(2)
 
         
         payment_types = gf.group_by("Payment Type").agg(pl.col("Amount Paid").sum().alias("Total Revenue"))
@@ -152,7 +152,10 @@ if authentication_status == True:
             .set_series_opts(label_opts=opts.LabelOpts(formatter="${c}"))
             .render_embed()
         )
+        with col2:
+            components.html(f, width=1100, height=350, scrolling=True)
         with st.container():
             components.html(c, width=1100, height=550, scrolling=True)
-            components.html(f, width=1100, height=350, scrolling=True)
+            components.html(f, width=500, height=350, scrolling=False)
+            st.write(payment_types.filter(pl.col("Earned") == True)
             
