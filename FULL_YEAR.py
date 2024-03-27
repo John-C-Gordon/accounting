@@ -142,19 +142,17 @@ if authentication_status == True:
             .render_embed()
         )
         f = (
-            Pie()
+            Pie(init_opts=opts.InitOpts(theme=ThemeType.SHINE))
             .add(
                 "Earned vs. Unearned Revenue",
                 [list(z) for z in zip(earned_unearned["Earned"].to_list(), earned_unearned["Total Revenue"].to_list())],
-                radius=["25%", "50%"],
-                center=["26%", "50%"],
                 label_opts=opts.LabelOpts(is_show=True),
             )
-            .set_global_opts(title_opts=opts.TitleOpts(title="Primary & Secondary Type Breakdown (Non-Legendaries)"))
+            .set_global_opts(title_opts=opts.TitleOpts(title="Earned vs. Unearned Revenue"))
             .set_series_opts(label_opts=opts.LabelOpts(formatter="{b}: {c}"))
             .render_embed()
         )
         with st.container():
             components.html(c, width=1100, height=550, scrolling=True)
-            components.html(f, width=1100, height=550, scrolling=True)
+            components.html(f, width=1100, height=350, scrolling=True)
             
