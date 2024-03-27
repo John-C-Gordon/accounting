@@ -138,9 +138,10 @@ if authentication_status == True:
             .add_yaxis("Unearned Revenue", unearned_payment_types.sort('Payment Type')['Total Revenue'].to_list())
             .set_global_opts(
                 xaxis_opts=opts.AxisOpts(axislabel_opts=opts.LabelOpts(rotate=-30), is_scale=True),
-                title_opts=opts.TitleOpts(title="Revenue by Payment Type")
+                title_opts=opts.TitleOpts(title="Revenue by Payment Type"),
+                legend_opts=opts.LegendOpts(selected_mode='single')
             )
-            .set_series_opts(label_opts=opts.LabelOpts(formatter="${c}", position="top"), legend_opts=opts.LegendOpts(selected_mode='single'))
+            .set_series_opts(label_opts=opts.LabelOpts(formatter="${c}", position="top"))
             .render_embed()
         )
         f = (
