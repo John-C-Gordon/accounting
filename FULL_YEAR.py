@@ -137,5 +137,5 @@ if authentication_status == True:
         #     )
         # )
         # st_pyecharts(c)
-        st.write([gf.unique(subset=['Payment Type'])
+        st.write(gf.unique(subset=['Payment Type'])
 
