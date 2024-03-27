@@ -16,7 +16,7 @@ from pyecharts import options as opts
 from streamlit_echarts import st_pyecharts
 #TITLE
 
-st.set_page_config(page_icon="📊", page_title="Accounting Data Query")
+st.set_page_config(page_icon="📊", page_title="Accounting Data Query", layout="wide")
 # api_token = st.secrets["api_token"]
 credentials = {
     "usernames":{
