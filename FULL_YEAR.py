@@ -73,7 +73,7 @@ if authentication_status == True:
     gf = get_gf()
 
     
-    # selected = option_menu(menu_title=None, options=['Analysis', 'Search', 'Smart Query'], icons=['clipboard2-data', 'search', 'magic'], orientation='horizontal',) 
+    selected = option_menu(menu_title=None, options=['Analysis', 'Search', 'Smart Query'], icons=['clipboard2-data', 'search', 'magic'], orientation='horizontal',) 
     # st.write(selected)
     # if selected == 'Search':
     
