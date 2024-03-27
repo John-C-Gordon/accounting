@@ -133,9 +133,9 @@ if authentication_status == True:
         c = (
             Bar(init_opts=opts.InitOpts(theme=ThemeType.SHINE))
             .add_xaxis(
-                earned_payment_types['Payment Type'].to_list())
-            .add_yaxis("Earned Revenue", earned_payment_types['Total Revenue'].to_list())
-            .add_yaxis("Unearned Revenue", unearned_payment_types['Total Revenue'].to_list())
+                earned_payment_types['Payment Type'].sort().to_list())
+            .add_yaxis("Earned Revenue", earned_payment_types.sort('Payment Type')['Total Revenue'].to_list())
+            .add_yaxis("Unearned Revenue", unearned_payment_types.sort('Payment Type')['Total Revenue'].to_list())
             .set_global_opts(
                 xaxis_opts=opts.AxisOpts(axislabel_opts=opts.LabelOpts(rotate=-30), is_scale=True),
                 title_opts=opts.TitleOpts(title="Revenue by Payment Type")
@@ -160,4 +160,4 @@ if authentication_status == True:
             components.html(f, width=1100, height=350, scrolling=False)
         with st.container():
             components.html(c, width=1100, height=550, scrolling=True)
-            # st.write(unearned_payment_types['Total Revenue'].sort().to_list())
+            st.write(unearned_payment_types['Total Revenue'].sort().to_list())
