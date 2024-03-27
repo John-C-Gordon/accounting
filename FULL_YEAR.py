@@ -126,7 +126,7 @@ if authentication_status == True:
         earned_unearned = (gf.group_by("Earned").agg(pl.col("Amount Paid").sum().alias("Total Revenue")))
         col1, col2, col3 = st.columns(3)
             
-        with col1:
+        # with col1:
             # st.dataframe(earned_unearned)
         with col2:
             st.metric = ("Temperature", "70 °F", "1.2 °F")
