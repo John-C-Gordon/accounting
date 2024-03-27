@@ -127,13 +127,14 @@ if authentication_status == True:
         col1, col2 = st.columns(2)
 
         
-        payment_types = gf.group_by("Payment Type").agg(pl.col("Amount Paid").sum().alias("Total Revenue"))
+        unearned_payment_types = gf.filter(pl.col("Earned") == False).group_by("Payment Type").agg(pl.col("Amount Paid").sum().alias("Total Revenue"))
+        earned_payment_types = gf.filter(pl.col("Earned") == False).group_by("Payment Type").agg(pl.col("Amount Paid").sum().alias("Total Revenue"))
         c = (
             Bar(init_opts=opts.InitOpts(theme=ThemeType.SHINE))
             .add_xaxis(
-                payment_types['Payment Type'].to_list())
-            .add_yaxis("Revenue", payment_types['Total Revenue'].to_list())
-            # .add_yaxis("商家B", [20, 10, 40, 30, 40, 50])
+                unearned_payment_types['Payment Type'].to_list())
+            .add_yaxis("Earned Revenue", earned_payment_types['Total Revenue'].to_list())
+            .add_yaxis("Unearned Revenue", unearned_payment_types['Total Revenue'].to_list())
             .set_global_opts(
                 xaxis_opts=opts.AxisOpts(axislabel_opts=opts.LabelOpts(rotate=-30), is_scale=True),
                 title_opts=opts.TitleOpts(title="Revenue by Payment Type")
