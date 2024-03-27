@@ -124,10 +124,11 @@ if authentication_status == True:
                 
     if selected == 'Analysis':
         earned_unearned = (gf.group_by("Earned").agg(pl.col("Amount Paid").sum().alias("Total Revenue")))
-#col1, col2, col3 = st.columns(3)
+        col1, col2, col3 = st.columns(3)
             
-        # with col1:
-        st.dataframe(earned_unearned)
+        with col1:
+            st.dataframe(earned_unearned)
+        col2.metric = ("Temperature", "70 °F", "1.2 °F")
         payment_types = gf.group_by("Payment Type").agg(pl.col("Amount Paid").sum().alias("Total Revenue"))
         c = (
             Bar(init_opts=opts.InitOpts(theme=ThemeType.SHINE))
