@@ -157,5 +157,5 @@ if authentication_status == True:
         with st.container():
             components.html(c, width=1100, height=550, scrolling=True)
             components.html(f, width=500, height=350, scrolling=False)
-            st.write(gf.filter(pl.col("Earned") == True).group_by("Payment Type").agg(pl.col("Amount Paid").sum().alias("Total Revenue")))
+            st.write(gf.filter(pl.col("Earned") == False).group_by("Payment Type").agg(pl.col("Amount Paid").sum().alias("Total Revenue")))
             
