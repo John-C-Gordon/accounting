@@ -128,11 +128,11 @@ if authentication_status == True:
         c = (
             Bar(init_opts=opts.InitOpts(height="1900px", width="1920px"))
             .add_xaxis(
-                payment_types['Payment Type'].to_list(), is_scale=True)
+                payment_types['Payment Type'].to_list())
             .add_yaxis("商家A", payment_types['Total Revenue'].to_list())
             # .add_yaxis("商家B", [20, 10, 40, 30, 40, 50])
             .set_global_opts(
-                xaxis_opts=opts.AxisOpts(axislabel_opts=opts.LabelOpts(rotate=-15)),
+                xaxis_opts=opts.AxisOpts(axislabel_opts=opts.LabelOpts(rotate=-15), is_scale=True),
                 title_opts=opts.TitleOpts(title="Revenue by Payment Type"),
                 datazoom_opts=opts.DataZoomOpts()
             )
