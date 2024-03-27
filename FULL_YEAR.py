@@ -129,11 +129,11 @@ if authentication_status == True:
             Bar()
             .add_xaxis(
                 payment_types['Payment Type'].to_list())
-            # .add_yaxis("商家A", [10, 20, 30, 40, 50, 40])
+            .add_yaxis("商家A", payment_types['Total Revenue'].to_list())
             # .add_yaxis("商家B", [20, 10, 40, 30, 40, 50])
             .set_global_opts(
                 xaxis_opts=opts.AxisOpts(axislabel_opts=opts.LabelOpts(rotate=-15)),
-                title_opts=opts.TitleOpts(title="Bar-旋转X轴标签", subtitle="解决标签名字过长的问题"),
+                title_opts=opts.TitleOpts(title="Revenue by Payment Type"),
                 datazoom_opts=opts.DataZoomOpts()
             )
         )
