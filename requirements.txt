@@ -8,3 +8,4 @@ streamlit-authenticator
 mysql-connector-python
 polars
 streamlit-option-menu
+streamlit-echarts
