@@ -122,7 +122,7 @@ if authentication_status == True:
         col1, col2, col3 = st.columns(3)
             
         with col1:
-            st.dataframe(earned_unearned)
+            # st.dataframe(earned_unearned)
 
             # c = (
             #     Bar()
