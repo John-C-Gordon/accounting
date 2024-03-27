@@ -146,4 +146,5 @@ if authentication_status == True:
         )
         with st.container():
             components.html(c, width=1100, height=550, scrolling=True)
+            st.metric = ("Temperature", "70 °F", "1.2 °F")
 
