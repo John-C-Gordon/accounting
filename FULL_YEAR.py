@@ -138,6 +138,7 @@ if authentication_status == True:
                 xaxis_opts=opts.AxisOpts(axislabel_opts=opts.LabelOpts(rotate=-30), is_scale=True),
                 title_opts=opts.TitleOpts(title="Revenue by Payment Type")
             )
+            .set_series_opts(label_opts=opts.LabelOpts(formatter="{b}: {c}"))
             .render_embed()
         )
         with st.container():
