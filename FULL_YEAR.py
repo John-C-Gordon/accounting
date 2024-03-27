@@ -58,7 +58,6 @@ if authentication_status == True:
     conn = load_data()
     
     st.title('2023 Full Year Pull :clipboard:')
-    selected = option_menu(menu_title=None, options=['Analysis', 'Search', 'Smart Query'], icons=['clipboard2-data', 'search', 'magic'], orientation='horizontal',)
     
     @st.cache_data
     def get_gf():
