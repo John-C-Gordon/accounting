@@ -126,7 +126,7 @@ if authentication_status == True:
             c = (
                 Bar()
                 .add_xaxis(
-                    earned_unearned.colums
+                    earned_unearned.columns
                 )
                 .add_yaxis("商家A", [10, 20, 30, 40, 50, 40])
                 .add_yaxis("商家B", [20, 10, 40, 30, 40, 50])
