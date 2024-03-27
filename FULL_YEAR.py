@@ -126,7 +126,7 @@ if authentication_status == True:
         st.dataframe(earned_unearned)
         payment_types = gf.group_by("Payment Type").agg(pl.col("Amount Paid").sum().alias("Total Revenue"))
         c = (
-            Bar()
+            Bar(init_opts=opts.InitOpts(height="900px", width="1920px")
             .add_xaxis(
                 payment_types['Payment Type'].to_list())
             .add_yaxis("商家A", payment_types['Total Revenue'].to_list())
