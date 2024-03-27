@@ -15,6 +15,7 @@ from pyecharts.globals import ThemeType
 from pyecharts import options as opts
 from streamlit_echarts import st_pyecharts
 import streamlit.components.v1 as components
+from pyecharts.globals import ThemeType
 
 #TITLE
 
@@ -129,7 +130,7 @@ if authentication_status == True:
         st.dataframe(earned_unearned)
         payment_types = gf.group_by("Payment Type").agg(pl.col("Amount Paid").sum().alias("Total Revenue"))
         c = (
-            Bar()
+            Bar(init_opts=opts.InitOpts(theme=ThemeType.CHALK)
             .add_xaxis(
                 payment_types['Payment Type'].to_list())
             .add_yaxis("Revenue ($)", payment_types['Total Revenue'].to_list())
