@@ -128,8 +128,8 @@ if authentication_status == True:
         with col1:
             st.dataframe(earned_unearned)
         
-        unearned_payment_types = gf.sort("Payment Type").filter(pl.col("Earned") == False).group_by("Payment Type").agg(pl.col("Amount Paid").sum().alias("Total Revenue"))
-        earned_payment_types = gf.sort("Payment Type").filter(pl.col("Earned") == True).group_by("Payment Type").agg(pl.col("Amount Paid").sum().alias("Total Revenue"))
+        unearned_payment_types = gf.filter(pl.col("Earned") == False).group_by("Payment Type").agg(pl.col("Amount Paid").sum().alias("Total Revenue"))
+        earned_payment_types = gf.filter(pl.col("Earned") == True).group_by("Payment Type").agg(pl.col("Amount Paid").sum().alias("Total Revenue"))
         c = (
             Bar(init_opts=opts.InitOpts(theme=ThemeType.SHINE))
             .add_xaxis(
@@ -160,3 +160,4 @@ if authentication_status == True:
             components.html(f, width=1100, height=350, scrolling=False)
         with st.container():
             components.html(c, width=1100, height=550, scrolling=True)
+            st.write(earned_payment_types['Payment Type'].sort().to_list())
