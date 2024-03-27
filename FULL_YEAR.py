@@ -133,7 +133,7 @@ if authentication_status == True:
         c = (
             Bar(init_opts=opts.InitOpts(theme=ThemeType.SHINE))
             .add_xaxis(
-                earned_payment_types['Payment Type'].to_list()
+                earned_payment_types['Payment Type'].to_list())
             .add_yaxis("Earned Revenue", earned_payment_types['Total Revenue'].to_list())
             .add_yaxis("Unearned Revenue", unearned_payment_types['Total Revenue'].to_list())
             .set_global_opts(
