@@ -14,6 +14,8 @@ from pyecharts.charts import Bar
 from pyecharts.globals import ThemeType
 from pyecharts import options as opts
 from streamlit_echarts import st_pyecharts
+import streamlit.components.v1 as components
+
 #TITLE
 
 st.set_page_config(page_icon="📊", page_title="Accounting Data Query", layout="wide")
@@ -134,10 +136,10 @@ if authentication_status == True:
             # .add_yaxis("商家B", [20, 10, 40, 30, 40, 50])
             .set_global_opts(
                 xaxis_opts=opts.AxisOpts(axislabel_opts=opts.LabelOpts(rotate=-30), is_scale=True),
-                title_opts=opts.TitleOpts(title="Revenue by Payment Type"),
-                datazoom_opts=[opts.DataZoomOpts()]
+                title_opts=opts.TitleOpts(title="Revenue by Payment Type")
             )
+            .render_embed()
         )
-        st_pyecharts(c)
-        st.write(st.session_state)
+        with st.container():
+            components.html(c, width=1100, height=550, scrolling=True)
 
