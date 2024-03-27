@@ -79,6 +79,7 @@ if authentication_status == True:
     
     selected = option_menu(menu_title=None, options=['Analysis', 'Search', 'Smart Query'], \
                            icons=['clipboard2-data', 'search', 'magic'], orientation='horizontal', key='Menu') 
+    selected
     # st.write(selected)
     if selected == 'Search':
     
