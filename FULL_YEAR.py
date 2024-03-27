@@ -18,7 +18,7 @@ import streamlit.components.v1 as components
 
 #TITLE
 
-st.set_page_config(page_icon="📊", page_title="Accounting Data Query", layout="wide")
+st.set_page_config(page_icon="📊", page_title="Accounting Data Query")
 # api_token = st.secrets["api_token"]
 credentials = {
     "usernames":{
