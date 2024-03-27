@@ -1,4 +1,4 @@
-import streamlit as st
+# import streamlit as st
 import sqlalchemy
 import pandas as pd
 from datetime import datetime
@@ -138,5 +138,5 @@ if authentication_status == True:
             )
         )
         st_pyecharts(c)
-        st.write(payment_types['Payment Type'].to_list())
+        # st.write(payment_types['Payment Type'].to_list())
 
