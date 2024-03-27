@@ -137,5 +137,5 @@ if authentication_status == True:
             )
         )
         st_pyecharts(c)
-        st.write(gf.columns)
+        st.write(gf['Payment Type'].head)
 
