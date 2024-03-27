@@ -138,5 +138,5 @@ if authentication_status == True:
             )
         )
         st_pyecharts(c)
-        # st.write(payment_types['Payment Type'].to_list())
+        st.write(st.session_state)
 
