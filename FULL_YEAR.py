@@ -139,20 +139,21 @@ if authentication_status == True:
             .set_series_opts(label_opts=opts.LabelOpts(formatter="${c}"))
             .render_embed()
         )
-        f = (
-            Pie()
-            .add(
-                "Earned vs. Unearned Revenue",
-                [list(z) for z in zip(earned_unearned["Earned].to_list(), earned_unearned["Total Revenue"].to_list())],
-                radius=["25%", "50%"],
-                center=["26%", "50%"],
-                label_opts=opts.LabelOpts(is_show=True),
-            )
-            .set_global_opts(title_opts=opts.TitleOpts(title="Primary & Secondary Type Breakdown (Non-Legendaries)")
-            .set_series_opts(label_opts=opts.LabelOpts(formatter="{b}: {c}"))
-            .render_embed()
-        )
+        # f = (
+        #     Pie()
+        #     .add(
+        #         "Earned vs. Unearned Revenue",
+        #         [list(z) for z in zip(earned_unearned["Earned].to_list(), earned_unearned["Total Revenue"].to_list())],
+        #         radius=["25%", "50%"],
+        #         center=["26%", "50%"],
+        #         label_opts=opts.LabelOpts(is_show=True),
+        #     )
+        #     .set_global_opts(title_opts=opts.TitleOpts(title="Primary & Secondary Type Breakdown (Non-Legendaries)")
+        #     .set_series_opts(label_opts=opts.LabelOpts(formatter="{b}: {c}"))
+        #     .render_embed()
+        # )
         with st.container():
             components.html(c, width=1100, height=550, scrolling=True)
-            components.html(f, width=1100, height=550, scrolling=True)
+            # components.html(f, width=1100, height=550, scrolling=True)
+            st.write(earned_unearned["Earned].to_list())
             
