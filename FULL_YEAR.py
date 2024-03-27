@@ -10,10 +10,10 @@ import mysql.connector
 from streamlit_option_menu import option_menu
 import streamlit_authenticator as stauth
 import polars as pl
-# from pyecharts.charts import Bar
-# from pyecharts.globals import ThemeType
-# from pyecharts import options as opts
-# from streamlit_echarts import st_pyecharts
+from pyecharts.charts import Bar
+from pyecharts.globals import ThemeType
+from pyecharts import options as opts
+from streamlit_echarts import st_pyecharts
 #TITLE
 
 st.set_page_config(page_icon="📊", page_title="Accounting Data Query")
@@ -125,17 +125,17 @@ if authentication_status == True:
         # with col1:
         st.dataframe(earned_unearned)
 
-        # c = (
-        #     Bar()
-        #     .add_xaxis(
-        #         earned_unearned.columns
-        #     )
-        #     .add_yaxis("商家A", [10, 20, 30, 40, 50, 40])
-        #     .add_yaxis("商家B", [20, 10, 40, 30, 40, 50])
-        #     .set_global_opts(
-        #         xaxis_opts=opts.AxisOpts(axislabel_opts=opts.LabelOpts(rotate=-15)),
-        #         title_opts=opts.TitleOpts(title="Bar-旋转X轴标签", subtitle="解决标签名字过长的问题"),
-        #     )
-        # )
-        # st_pyecharts(c)
+        c = (
+            Bar()
+            .add_xaxis(
+                earned_unearned.columns
+            )
+            .add_yaxis("商家A", [10, 20, 30, 40, 50, 40])
+            .add_yaxis("商家B", [20, 10, 40, 30, 40, 50])
+            .set_global_opts(
+                xaxis_opts=opts.AxisOpts(axislabel_opts=opts.LabelOpts(rotate=-15)),
+                title_opts=opts.TitleOpts(title="Bar-旋转X轴标签", subtitle="解决标签名字过长的问题"),
+            )
+        )
+        st_pyecharts(c)
 
