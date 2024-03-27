@@ -130,10 +130,10 @@ if authentication_status == True:
         st.dataframe(earned_unearned)
         payment_types = gf.group_by("Payment Type").agg(pl.col("Amount Paid").sum().alias("Total Revenue"))
         c = (
-            Bar(init_opts=opts.InitOpts(theme=ThemeType.CHALK))
+            Bar(init_opts=opts.InitOpts(theme=ThemeType.LIGHT))
             .add_xaxis(
                 payment_types['Payment Type'].to_list())
-            .add_yaxis("Revenue ($)", payment_types['Total Revenue'].to_list())
+            .add_yaxis("Revenue", payment_types['Total Revenue'].to_list())
             # .add_yaxis("商家B", [20, 10, 40, 30, 40, 50])
             .set_global_opts(
                 xaxis_opts=opts.AxisOpts(axislabel_opts=opts.LabelOpts(rotate=-30), is_scale=True),
