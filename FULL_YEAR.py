@@ -161,6 +161,7 @@ if authentication_status == True:
             components.html(f, width=1100, height=350, scrolling=False)
         with st.container():
             components.html(c, width=1100, height=550, scrolling=True)
+            st.write(st.session_state["Menu"])
 
     if selected == 'Smart Query':
         st.write("[Coming soon]")
