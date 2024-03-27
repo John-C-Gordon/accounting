@@ -134,7 +134,7 @@ if authentication_status == True:
             .set_global_opts(
                 xaxis_opts=opts.AxisOpts(axislabel_opts=opts.LabelOpts(rotate=-15), is_scale=True),
                 title_opts=opts.TitleOpts(title="Revenue by Payment Type"),
-                datazoom_opts=opts.DataZoomOpts()
+                datazoom_opts=[opts.DataZoomOpts(), opts.DataZoomOpts(type_="inside")]
             )
         )
         st_pyecharts(c)
