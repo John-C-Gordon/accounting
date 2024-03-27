@@ -74,7 +74,8 @@ if authentication_status == True:
     gf = get_gf()
 
     
-    selected = option_menu(menu_title=None, options=['Analysis', 'Search', 'Smart Query'], icons=['clipboard2-data', 'search', 'magic'], orientation='horizontal',) 
+    selected = option_menu(menu_title=None, options=['Analysis', 'Search', 'Smart Query'], \
+                           icons=['clipboard2-data', 'search', 'magic'], orientation='horizontal', key='Menu') 
     # st.write(selected)
     if selected == 'Search':
     
@@ -94,7 +95,7 @@ if authentication_status == True:
         
         for i in st.session_state:
             if i not in ["username", "init", "failed_login_attempts",
-            "authentication_status", "name", "logout"]: # want to ignore the login session states
+            "authentication_status", "name", "logout", "Menu"]: # want to ignore the login session states
                 if st.session_state['{}'.format(i)]:
                     dict = {'{}'.format(i): str(st.session_state['{}'.format(i)])}
                     fields.update(dict)
@@ -132,9 +133,9 @@ if authentication_status == True:
             .add_yaxis("商家A", payment_types['Total Revenue'].to_list())
             # .add_yaxis("商家B", [20, 10, 40, 30, 40, 50])
             .set_global_opts(
-                xaxis_opts=opts.AxisOpts(axislabel_opts=opts.LabelOpts(rotate=-15), is_scale=True),
+                xaxis_opts=opts.AxisOpts(axislabel_opts=opts.LabelOpts(rotate=-30), is_scale=True),
                 title_opts=opts.TitleOpts(title="Revenue by Payment Type"),
-                datazoom_opts=[opts.DataZoomOpts(), opts.DataZoomOpts(type_="inside")]
+                datazoom_opts=[opts.DataZoomOpts()]
             )
         )
         st_pyecharts(c)
