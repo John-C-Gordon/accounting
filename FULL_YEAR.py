@@ -147,6 +147,8 @@ if authentication_status == True:
             .add(
                 "Earned vs. Unearned Revenue",
                 [list(z) for z in zip(earned_unearned["Earned"].to_list(), earned_unearned["Total Revenue"].to_list())],
+                radius=["25%", "50%"],
+                center=["26%", "50%"],
                 label_opts=opts.LabelOpts(is_show=True),
             )
             .set_global_opts(title_opts=opts.TitleOpts(title="Earned vs. Unearned Revenue"))
