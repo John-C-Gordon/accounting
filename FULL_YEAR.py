@@ -155,5 +155,5 @@ if authentication_status == True:
         with st.container():
             components.html(c, width=1100, height=550, scrolling=True)
             # components.html(f, width=1100, height=550, scrolling=True)
-            st.write(earned_unearned["Earned].to_list())
+            st.write(earned_unearned["Earned"].to_list())
             
