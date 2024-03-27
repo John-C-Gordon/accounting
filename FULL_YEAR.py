@@ -56,7 +56,7 @@ if authentication_status == True:
         return st.connection(name=name,type=type)
     conn = load_data()
     
-    st.title('2023 Full Year Pull :clipboard:')
+    # st.title('2023 Full Year Pull :clipboard:')
     
     @st.cache_data
     def get_gf():
@@ -117,9 +117,9 @@ if authentication_status == True:
             if submitted:
                 st.dataframe(ctx.execute('''SELECT * FROM data WHERE {}'''.format(s[:-3]), eager=True))
                 # st.write('{}'.format(ctx.execute('''SELECT * FROM data WHERE {}'''.format(s[:-3]).head)))
-    if selected == 'Analysis':
-        earned_unearned = (gf.group_by("Earned").agg(pl.col("Amount Paid").sum().alias("Total Revenue")))
-        col1, col2, col3 = st.columns(3)
+    # if selected == 'Analysis':
+    #     earned_unearned = (gf.group_by("Earned").agg(pl.col("Amount Paid").sum().alias("Total Revenue")))
+    #     col1, col2, col3 = st.columns(3)
             
         # with col1:
             # st.dataframe(earned_unearned)
