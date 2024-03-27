@@ -128,7 +128,7 @@ if authentication_status == True:
         c = (
             Bar()
             .add_xaxis(
-                gf.columns)
+                gf['Payment Type'].head)
             .add_yaxis("商家A", [10, 20, 30, 40, 50, 40])
             .add_yaxis("商家B", [20, 10, 40, 30, 40, 50])
             .set_global_opts(
