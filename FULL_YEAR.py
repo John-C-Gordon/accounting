@@ -117,9 +117,9 @@ if authentication_status == True:
         if len(fields) != 0:
             if submitted:
                 st.dataframe(ctx.execute('''SELECT * FROM data WHERE {}'''.format(s[:-3]), eager=True))
-                # st.write('{}'.format(ctx.execute('''SELECT * FROM data WHERE {}'''.format(s[:-3]).head)))
-    # if selected == 'Analysis':
-    #     earned_unearned = (gf.group_by("Earned").agg(pl.col("Amount Paid").sum().alias("Total Revenue")))
+                
+    if selected == 'Analysis':
+        earned_unearned = (gf.group_by("Earned").agg(pl.col("Amount Paid").sum().alias("Total Revenue")))
     #     col1, col2, col3 = st.columns(3)
             
         # with col1:
